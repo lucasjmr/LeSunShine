@@ -1,0 +1,32 @@
+<?php 
+    session_start();
+?>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="sign-in-up.css">
+    <link rel="icon" href="../media/logo.png">
+    <title>Connexion</title>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="../media/logo.png" alt="logo">
+        <p id="title">LeSunShine</p>
+    </header>
+    <div id="lower">
+        <div id="form-box">
+            <p id="form_title">Connexion</p>
+            <form action="sign-in.php" method="POST">
+                <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
+                <input type="password" name="password" minlength="3" maxlength="16" placeholder="Mot De Passe">
+                <input type="submit" name="submit" value="Valider">
+            </form>
+            <p id="no-account">Pas de compte ? <a href="sign-up.html">S'inscrire</p></a>
+        </div>
+    </div>
+</body>
+
+</html>

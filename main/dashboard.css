@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../media/dashboard.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    /* Allows to push items to left and right, text to middle */
+    padding: 1vh;
+}
+
+.logo {
+    max-height: 100%;
+    max-width: 50%;
+}
+
+#title {
+    font-size: 400%;
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: white;
+}
+
+#lower {
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    font-family: "Roboto", sans-serif;
+    background-color: #ffffff;
+    padding: 2% 3%;
+    flex: 1;
+    margin: 10vh 5vh;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.box h1 {
+    text-align: center;
+    padding-bottom: 3vh;
+    color: white;
+}
+
+.box p {
+    padding-top: 20%;
+    text-align: justify;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.box:hover {
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+}
+
+header img {
+    padding-right: 10px;
+}

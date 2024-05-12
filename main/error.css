@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../media/error.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    /* Allows to push items to left and right, text to middle */
+    padding: 1vh;
+}
+
+.logo {
+    max-height: 100%;
+    max-width: 50%;
+}
+
+#title {
+    font-size: 400%;
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: white;
+}
+
+#lower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.box {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    padding: 5% 10%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    padding: 4vh;
+}
+
+.box>p {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 200%;
+    text-align: center;
+}
+
+.button-13 {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    padding: 2% 5%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 140%;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header img {
+    padding-right: 10px;
+}
