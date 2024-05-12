@@ -1,3 +1,5 @@
-Start of project : 01/05/2024
+01/05/2024 : Début du projet
 
-Update -- Nothing changed : 07/05/2024
+07/05/2024 : Rien n'a changé
+
+12/05/2024 : structure du site + gestion profil 
