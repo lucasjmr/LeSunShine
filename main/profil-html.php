@@ -74,7 +74,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
             <div class="image-container">
                 <img src="../data/images/<?php echo $_SESSION['pseudo'] ?>.jpg" alt="Veuillez uploader une image.">
             </div>
-            <div id="upload-form">
+            <div id="upload-form" onclick="location.href='upload-html.php'">
                 Uploader une image
             </div>
         </div>

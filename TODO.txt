@@ -1,3 +1,4 @@
 ajouter verif de la date de naissance
 verif si $_SESSION['pseudo'] est set avant chaque page qui demande d'etre connecté
 verif les noms des onglets de chaque page
+ajouter un bouton dashboard sur toutes les pages

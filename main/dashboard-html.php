@@ -34,7 +34,7 @@
             <h1>Abonnements</h1>
             <p>Description</p>
         </div>
-        <div class="box" onclick="location.href='profil.php'">
+        <div class="box" onclick="location.href='profil-html.php'">
             <h1>Profil</h1>
             <p> Dans cette section, vous pourrez consulter les détails de votre profil, ce qui inclut la
                 partie publique et privée renseignées à votre inscription sur le site.<br><br>
