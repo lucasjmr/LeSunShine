@@ -58,13 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if ($found && password_verify($form_password, $logins_array[$form_pseudo]))
     {
         // Read all data from user 
-        $userFile = fopen("../data/users/$pseudo.sunshine", "rb");
+        $userFile = fopen("../data/users/$form_pseudo.sunshine", "rb");
         if (!$userFile)
         {
             exit("Something went wrong while trying to open user file");
         }
 
-        $content = fread($userFile, filesize("../data/users/$pseudo.sunshine"));
+        $content = fread($userFile, filesize("../data/users/$form_pseudo.sunshine"));
         $array = explode("\r\n", $content);
 
         // Fill session infos 

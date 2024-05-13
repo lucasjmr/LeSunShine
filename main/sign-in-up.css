@@ -50,10 +50,11 @@ header {
 }
 
 .scroll {
-    overflow: hidden;
     overflow-y: scroll;
     max-height: 39%;
+    min-height: 39%;
 }
+
 
 .scroll::-webkit-scrollbar-track {
     border: 2px solid rgba(255, 255, 255, 0.2);

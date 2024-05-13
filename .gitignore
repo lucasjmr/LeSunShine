@@ -1,4 +1,2 @@
 data/images/*.jpg
-!data/images/test.jpg
-data/users/*.sunshine
-!data/users/test.sunshine
+!data/images/temp.jpg
