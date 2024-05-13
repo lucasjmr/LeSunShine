@@ -13,13 +13,15 @@
 
 <body>
     <header>
-        <img class="logo" src="../media/logo.png" alt="logo">
-        <p id="title">LeSunShine</p>
+        <div id="header-container-left">
+            <img class="logo" src="../media/logo.png" alt="logo">
+            <p id="title">LeSunShine</p>
+        </div>
     </header>
     <div id="lower">
         <div id="form-box">
-            <p id="form_title">Connexion</p>
-            <form action="sign-in.php" method="POST">
+            <p id="form-title">Connexion</p>
+            <form action="sign-in.php" method="POST" id="signin">
                 <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
                 <input type="password" name="password" minlength="3" maxlength="16" placeholder="Mot De Passe">
                 <input type="submit" name="submit" value="Valider">

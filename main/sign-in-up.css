@@ -10,84 +10,70 @@
 body {
     background-image: url("../media/sign-in-up-image.jpg");
     background-size: cover;
-    background-position: center;
 }
 
 header {
     display: flex;
     height: 10vh;
     align-items: center;
+    justify-content: space-between;
     /* Allows to push items to left and right, text to middle */
-    padding: 1vh;
 }
 
-.logo {
-    max-height: 100%;
-    max-width: 50%;
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 #title {
-    font-size: 400%;
+    font-size: 70px;
     font-weight: bold;
     font-family: "Sedan SC", serif;
     color: white;
 }
 
-#lower {
-    height: 90vh;
-    padding: 10vh 30%;
+.logo {
+    width: 100px;
+    height: auto;
 }
 
 #form-box {
+    font-family: "Roboto", sans-serif;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
-    padding: 5% 10%;
+    padding: 30px;
     border-radius: 50px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    max-height: 49vh;
-    min-height: 49vh;
+    width: 700px;
+    height: 350px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.scroll {
-    overflow-y: scroll;
-    max-height: 39%;
-    min-height: 39%;
+#form-box input::placeholder {
+    color: #ccc;
 }
 
-
-.scroll::-webkit-scrollbar-track {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-	border-radius: 10px;
-	background: transparent;
-}
-
-.scroll::-webkit-scrollbar
-{
-	width: 12px;
-	background: transparent;
-}
-
-.scroll::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: rgba(255, 255, 255, .2);
-}
-
-#form_title {
-    font-family: "Roboto", sans-serif;
-    color: white;
+#form-title {
+    font-size: 40px;
     font-weight: bold;
-    font-size: 200%;
+    color: white;
+    font-family: "Roboto", sans-serif;
     text-align: center;
-    padding-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-#form-box input {
+input {
     width: 100%;
+    margin-bottom: 25px;
     height: 10%;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 50px;
     background: transparent;
@@ -95,19 +81,57 @@ header {
     color: #ccc;
 }
 
-#form-box input::placeholder {
-    color: #ccc;
-}
-
-#form-box input[type="submit"] {
+input[type="submit"] {
     background-color: white;
     color: black;
     cursor: pointer;
     border: none;
-    font-family: "Roboto", sans-serif;
     text-transform: uppercase;
-    font-weight: bold;
+    line-height: 10%;
+}
+
+#end_of_scroll {
     margin-bottom: 0px;
+}
+
+#no-account {
+    margin-top: 5px;
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+}
+
+#no-account a {
+    text-decoration: none;
+    color: #ccc;
+    font-weight: bold;
+}
+
+header img {
+    padding-right: 10px;
+}
+
+.scroll {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 60%;
+    margin-bottom: 20px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: transparent;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 12px;
+    background: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .2);
 }
 
 input[type="radio"] {
@@ -115,7 +139,7 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-label{
+label {
     color: #ccc;
     font-family: "Roboto", sans-serif;
     display: inline-block;
@@ -123,6 +147,7 @@ label{
     align-items: center;
     position: relative;
     height: 10%;
+    line-height: 10%;
     width: 49%;
     padding: 20px;
     margin-bottom: 30px;
@@ -133,29 +158,10 @@ label{
     cursor: pointer;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked+label {
     background: rgba(255, 255, 255, .2);
     color: black;
     font-weight: bold;
-}
-
-#no-account {
-    margin-top: 5.5%;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    color: #ccc;
-    font-size: 16px;
-}
-
-#no-account a {
-    text-decoration: none;
-    color: #ccc;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-header img {
-    padding-right: 10px;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -170,6 +176,7 @@ header img {
 .form-row {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .form-row label {
@@ -179,13 +186,6 @@ header img {
     margin-right: 5px;
 }
 
-.form-row input[type="date"] {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    padding: 20px;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 50px;
-    background: transparent;
-    font-size: 18px;
-    color: #ccc;
+input[type="date"] {
+    width: 100%;
 }

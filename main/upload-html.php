@@ -16,9 +16,16 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="../media/logo.png" alt="logo">
-        <p id="title">LeSunShine</p>
+<header>
+        <div id="header-container-left">
+            <img class="logo" src="../media/logo.png" alt="logo">
+            <p id="title">LeSunShine</p>
+        </div>
+        <div id="header-container-right">
+            <div class="button" onclick="location.href='profil-html.php'">
+                Profil
+            </div>
+        </div>
     </header>
     <div class="box">
         <form action="upload.php" method="POST" enctype="multipart/form-data">

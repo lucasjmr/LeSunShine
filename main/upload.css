@@ -17,20 +17,46 @@ header {
     display: flex;
     height: 10vh;
     align-items: center;
+    justify-content: space-between;
     /* Allows to push items to left and right, text to middle */
-    padding: 1vh;
 }
 
-.logo {
-    max-height: 100%;
-    max-width: 50%;
+#header-container-right {
+    width: 150px;
+    height: 70px;
+}
+
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 #title {
-    font-size: 400%;
+    font-size: 70px;
     font-weight: bold;
     font-family: "Sedan SC", serif;
     color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.button {
+    display: flex;
+    padding: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 #lower {
@@ -73,12 +99,12 @@ header img {
     display: none;
 }
 
-label, input[type="submit"] {
+label,
+input[type="submit"] {
     font-family: "Roboto", sans-serif;
     text-align: center;
     background-color: #ffffff;
     padding: 10%;
-
     font-size: 16px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);

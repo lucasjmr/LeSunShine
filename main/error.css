@@ -7,37 +7,56 @@
     padding: 0;
 }
 
-body {
-    background-image: url("../media/error.jpg");
-    background-size: cover;
-    background-position: center;
+#lower {
+    height: 90vh;
 }
 
 header {
     display: flex;
     height: 10vh;
     align-items: center;
+    justify-content: space-between;
     /* Allows to push items to left and right, text to middle */
-    padding: 1vh;
 }
 
-.logo {
-    max-height: 100%;
-    max-width: 50%;
+#header-container-right {
+    width: 150px;
+    height: 70px;
+}
+
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 #title {
-    font-size: 400%;
+    font-size: 70px;
     font-weight: bold;
     font-family: "Sedan SC", serif;
     color: white;
 }
 
-#lower {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+header img {
+    padding-right: 10px;
+}
+
+body {
+    background-image: url("../media/error.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .box {
@@ -48,7 +67,7 @@ header {
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
-    padding: 4vh;
+    padding: 4%;
 }
 
 .box>p {
@@ -63,7 +82,7 @@ header {
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
-    padding: 2% 5%;
+    padding: 1% 2%;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
@@ -81,8 +100,4 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-header img {
-    padding-right: 10px;
 }

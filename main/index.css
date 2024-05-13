@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+#lower {
+    height: 90vh;
+}
+
 header {
     display: flex;
     height: 10vh;
@@ -15,29 +19,27 @@ header {
     /* Allows to push items to left and right, text to middle */
 }
 
-.header-container {
-    width: 20vh;
-    padding-right: 1vh;
+#header-container-right {
+    width: 150px;
+    height: 70px;
 }
 
 #header-container-left {
     display: flex;
-    width: 20vh;
-    align-items: center;
-    padding-left: 1vh;
-    padding-right: 1vh;
-}
-
-.logo {
-    max-height: 100%;
-    max-width: 50%;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 #title {
-    font-size: 400%;
+    font-size: 70px;
     font-weight: bold;
     font-family: "Sedan SC", serif;
     color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
 }
 
 video {
@@ -49,7 +51,7 @@ video {
 }
 
 #onvideo {
-    font-size: 600%;
+    font-size: 70px;
     font-weight: bold;
     font-family: "Sedan SC", serif;
     position: absolute;
@@ -60,24 +62,19 @@ video {
     text-align: center;
 }
 
-#lower {
-    height: 90vh;
-}
-
-.button-13 {
+.button {
+    display: flex;
+    padding: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto", sans-serif;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
-    padding: 5% 10%;
     border-radius: 10px;
-    color: #0f1111;
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    font-size: 140%;
-    text-align: center;
-    width: 100%;
-    height: 75%;
-    color: white;
 }
 
 header img {

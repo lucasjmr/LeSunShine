@@ -16,9 +16,16 @@
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="../media/logo.png" alt="logo">
-        <p id="title">LeSunShine</p>
+<header>
+        <div id="header-container-left">
+            <img class="logo" src="../media/logo.png" alt="logo">
+            <p id="title">LeSunShine</p>
+        </div>
+        <div id="header-container-right">
+            <div class="button" onclick="location.href='sign-in.html'">
+                Deconnection
+            </div>
+        </div>
     </header>
 
     <div id="lower">

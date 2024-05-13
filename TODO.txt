@@ -4,3 +4,4 @@ verif les noms des onglets de chaque page
 ajouter un bouton dashboard sur toutes les pages
 verif dans signin.php que l'email est pas deja pris
 creer repertoire data-images-users et logins.sunshine
+si jai le temps : changer toutes les valeurs en vh

@@ -9,12 +9,14 @@
 
 <body>
     <header>
-        <img class="logo" src="../media/logo.png" alt="logo">
-        <p id="title">LeSunShine</p>
+        <div id="header-container-left">
+            <img class="logo" src="../media/logo.png" alt="logo">
+            <p id="title">LeSunShine</p>
+        </div>
     </header>
     <div id="lower">
         <div id="form-box">
-            <p id="form_title">Inscription</p>
+            <p id="form-title">Inscription</p>
             <div class="scroll">
                 <form action="sign-up.php" method="POST">
                     <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
@@ -34,9 +36,9 @@
                     <input type="text" name="last_name" minlength="3" maxlength="32" placeholder="Nom de famille">
                     <input type="text" name="first_name" minlength="2" maxlength="32" placeholder="Prénom">
                     <input type="text" name="home_adress" minlength="3" maxlength="128" placeholder="Adresse postale">
-                    <input type="text" name="custom_message" minlength="3" maxlength="16" placeholder="Message personnalisé">
+                    <input type="text" name="custom_message" minlength="3" maxlength="128" placeholder="Message personnalisé">
 
-                    <input type="submit" name="submit" value="Valider">
+                    <input type="submit" name="submit" value="Valider" id="end_of_scroll">
                 </form>
             </div>
             <p id="no-account">Déjà un compte ? <a href="sign-in.html">Se connecter</p></a>

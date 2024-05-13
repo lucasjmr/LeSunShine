@@ -1,2 +1,3 @@
 data/images/*.jpg
-!data/images/temp.jpg
+data/users/*.sunshine
+data/logins.sunshine
