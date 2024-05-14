@@ -10,3 +10,5 @@ Suite au setup de github desktop tardif, j'ai dû supprimer l'ancien dépôt pou
 12/05/2024 : structure du site + gestion profil
 
 13/05/2024 : correction bugs profil + rewrite complet css (compatible firefox + petits ecrans)
+
+14/05/2024 : système abonnement terminé. PLus de détails dans la description du commit
