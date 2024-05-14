@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="dashboard.css">
     <link rel="icon" href="../media/logo.png">
-    <title>LeSunShine</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <h1>Messages</h1>
             <p>Description</p>
         </div>
-        <div class="box" onclick="location.href='pricing.html'">
+        <div class="box" onclick="location.href='pricing-html.php'">
             <h1>Abonnements</h1>
             <p>Description</p>
         </div>

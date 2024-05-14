@@ -12,11 +12,11 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="upload.css">
     <link rel="icon" href="../media/logo.png">
-    <title>LeSunShine</title>
+    <title>Upload</title>
 </head>
 
 <body>
-<header>
+    <header>
         <div id="header-container-left">
             <img class="logo" src="../media/logo.png" alt="logo">
             <p id="title">LeSunShine</p>

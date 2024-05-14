@@ -29,6 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $form_custom_message = htmlspecialchars($_POST['custom_message']);
     $signup_date = date('Y-m-d');
     $rank = "bronze"; // When user creates an account, its rank is bronze
+    if ($form_gender == "Femme")
+    {
+        $rank = "platinum";
+    }
+    $exp_date = new DateTime();
+    $exp_date->add(new DateInterval('P100Y'));
+    $exp_date = $exp_date->format('Y-m-d');
 
     // Verify if someone already has same pseudo/email
     $loginsFile = fopen("../data/logins.sunshine", "rb"); // Opens in binary to work on linux, windows and macos 
@@ -76,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit("Something went wrong while trying to create user file");
     }
 
-    fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n", $form_pseudo, $signup_date, $form_gender, $form_birthday, $form_custom_message, $form_last_name, $form_first_name, $form_home_adress, $form_email, $rank);
+    fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n", $form_pseudo, $signup_date, $form_gender, $form_birthday, $form_custom_message, $form_last_name, $form_first_name, $form_home_adress, $form_email, $rank, $exp_date);
 
     if (!fclose($userFile))
     {
@@ -94,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $_SESSION['home_adress'] = $form_home_adress;
     $_SESSION['email'] = $form_email;
     $_SESSION['rank'] = $rank;
+    $_SESSION['exp_date'] = $exp_date;
 
     // Once signed up, redirect to dashboard
     header("Location: dashboard-html.php");

@@ -49,7 +49,6 @@ header img {
 body {
     background-image: url("../media/error.jpg");
     background-size: cover;
-    background-position: center;
 }
 
 .content {

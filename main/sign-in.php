@@ -78,12 +78,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $_SESSION['home_adress'] = $array[7];
         $_SESSION['email'] = $array[8];
         $_SESSION['rank'] = $array[9];
+        $_SESSION['exp_date'] = $array[10];
 
         if (!fclose($userFile))
         {
             exit("Something went wrong while trying to close user file");
         }
 
+        // Verify plan
+        if ((strtotime(date("Y-m-d")) > strtotime($_SESSION['exp_date'])) && $_SESSION['rank'] != "platinum")
+        {
+            $_SESSION['rank'] = "bronze";
+            $exp_date = new DateTime();
+            $exp_date->add(new DateInterval('P100Y'));
+            $exp_date = $exp_date->format('Y-m-d');
+            $_SESSION['exp_date'] = $exp_date;
+
+            // Update user info file
+            $userFile = fopen("../data/users/$form_pseudo.sunshine", "wb");
+            if (!$userFile)
+            {
+                exit("Something went wrong while trying to create user file");
+            }
+
+            fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n", $_SESSION['pseudo'], $_SESSION['signup_date'], $_SESSION['gender'], $_SESSION['birthday'], $_SESSION['custom_message'], $_SESSION['last_name'], $_SESSION['first_name'], $_SESSION['home_adress'], $_SESSION['email'], $_SESSION['rank'], $_SESSION['exp_date']);
+            if (!fclose($userFile))
+            {
+                exit("Something went wrong while trying to close user file");
+            }
+        }
         header("Location: dashboard-html.php");
     }
     else

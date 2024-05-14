@@ -73,6 +73,9 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                 <p>Abonnement :
                     <?= $_SESSION['rank'] ?>
                 </p>
+                <p>Date de fin de l'abonnement : 
+                    <?= $_SESSION['exp_date'] ?>
+                </p>
             </div>
         </div>
         <div class="box">

@@ -10,7 +10,6 @@
 body {
     background-image: url("../media/dashboard.jpg");
     background-size: cover;
-    background-position: center;
 }
 
 header {
@@ -62,7 +61,6 @@ header {
 #lower {
     height: 90vh;
     display: flex;
-    justify-content: space-between;
 }
 
 .box {
