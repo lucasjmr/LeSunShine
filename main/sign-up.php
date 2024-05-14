@@ -37,11 +37,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $exp_date->add(new DateInterval('P100Y'));
     $exp_date = $exp_date->format('Y-m-d');
 
+    // Verify if the given birthday date is correct
+    $date = new DateTime($form_birthday);
+    $now = new DateTime();
+    $interval = $now->diff($date);
+    $age = $interval->y;
+
+    $parsed_birthday = date_parse($form_birthday); // get associative array of the date to check for invalid input
+    if (!checkdate(!$parsed_birthday || $parsed_birthday['month'], $parsed_birthday['day'], $parsed_birthday['year'])) // check if date is valid
+    {
+        echo error_page("La date de naissance n'est pas valide.");
+        exit("Invalid birth date.");
+    }
+
+    if ($age < 18 || $age > 122)
+    {
+        echo error_page("Vous devez avoir entre 18 et 122 ans");
+        exit("User must be between 18 and 122 years old.");
+    }
+
     // Verify if someone already has same pseudo/email
     $loginsFile = fopen("../data/logins.sunshine", "rb"); // Opens in binary to work on linux, windows and macos 
     if (!$loginsFile)
     {
-        exit("Something went wrong while trying to open logins file");
+        exit("Something went wrong while trying to open logins file.");
     }
 
     while (!feof($loginsFile))
