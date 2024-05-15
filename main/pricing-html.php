@@ -30,7 +30,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
     <div id="lower">
         <div class="box" onclick="location.href='rank-process.php?rank=bronze'">
             <h1>Bronze</h1>
-            <p>Vous n'avez aucun avantage et êtes limité en fonctionnalités.</p>
+            <p>Rang de base sans avantage. Montez en rang pour débloquer toutes les fonctionnalités</p>
             <p class="price-tag">Prix : gratuit</p>
             <span>
                 <?php

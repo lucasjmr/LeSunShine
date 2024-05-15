@@ -1,9 +1,9 @@
-<?php 
-    session_start();
-    if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
-    {
-        header("Location: sign-in-html.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
+{
+    header("Location: sign-in-html.php");
+}
 ?>
 
 <html>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<header>
+    <header>
         <div id="header-container-left">
             <img class="logo" src="../media/logo.png" alt="logo">
             <p id="title">LeSunShine</p>
@@ -29,7 +29,7 @@
     </header>
 
     <div id="lower">
-        <div class="box" onclick="location.href='search.html'">
+        <div class="box" onclick="location.href='search-html.php'">
             <h1>Recherche</h1>
             <p>Description</p>
         </div>

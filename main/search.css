@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#lower {
+    height: 90vh;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    /* Allows to push items to left and right, text to middle */
+}
+
+#header-container-right {
+    width: 150px;
+    height: 70px;
+}
+
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#title {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+header img {
+    padding-right: 10px;
+}
+
+body {
+    background-image: url("../media/search.jpg");
+    background-size: cover;
+}
+
+#form-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vh;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    padding: 2% 3%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.button {
+    display: flex;
+    padding: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 3vh;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    height: 45px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50px;
+    background: transparent;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+
+input::placeholder {
+    color: white;
+    text-align: center;
+}
+
+input[type="submit"] {
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+}
+
+.age {
+    display: flex;
+    justify-content: center;
+}
+
+.age-input {
+    text-align: center;
+    min-width: 49%;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    padding: 10px;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50px;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="radio"]:checked+label {
+    background: rgba(255, 255, 255, .2);
+    color: black;
+    font-weight: bold;
+}
+
+/* Chromium based */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

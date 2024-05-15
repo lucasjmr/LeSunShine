@@ -2,3 +2,4 @@ verif si $_SESSION['pseudo'] est set avant chaque page qui demande d'etre connec
 verif les noms des onglets de chaque page
 si jai le temps : changer toutes les valeurs en vh (css)
 savoir si mettre toutes les infos en obligatoire est autorisé
+creer les dossiers images et users si non présents
