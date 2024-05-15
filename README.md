@@ -13,4 +13,4 @@ Suite au setup de github desktop tardif, j'ai dû supprimer l'ancien dépôt pou
 
 14/05/2024 : système abonnement terminé. Plus de détails dans la description des commits
 
-15/05/2024 : systeme de modification du profil terminé = page web recherche terminée (pas de backend pour l'instant)
+15/05/2024 : systeme de modification du profil terminé + page web recherche terminée (pas de backend pour l'instant)
