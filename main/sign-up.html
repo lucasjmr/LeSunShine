@@ -20,7 +20,7 @@
             <div class="scroll">
                 <form action="sign-up.php" method="POST">
                     <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" minlength="8" maxlength="64" placeholder="Email">
                     <input type="password" name="password" minlength="3" maxlength="16" placeholder="Mot De Passe">
 
                     <input type="radio" name="gender" id="male" checked="checked" value="Homme">
@@ -30,13 +30,13 @@
 
                     <div class="form-row">
                         <label for="birthday">Date de naissance</label>
-                        <input type="date" name="birthday">
+                        <input type="date" name="birthday" id="birthday">
                     </div>
 
-                    <input type="text" name="last_name" minlength="3" maxlength="32" placeholder="Nom de famille">
+                    <input type="text" name="last_name" minlength="2" maxlength="32" placeholder="Nom de famille">
                     <input type="text" name="first_name" minlength="2" maxlength="32" placeholder="Prénom">
-                    <input type="text" name="home_adress" minlength="3" maxlength="128" placeholder="Adresse postale">
-                    <input type="text" name="custom_message" minlength="3" maxlength="128" placeholder="Message personnalisé">
+                    <input type="text" name="home_adress" minlength="12" maxlength="64" placeholder="Adresse postale">
+                    <input type="text" name="custom_message" minlength="3" maxlength="64" placeholder="Message personnalisé">
 
                     <input type="submit" name="submit" value="Valider" id="end_of_scroll">
                 </form>

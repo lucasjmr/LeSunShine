@@ -114,3 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         echo error_page("L'Authentification a échoué.");
     }
 }
+else
+{
+    header("Location: sign-in.html");
+}

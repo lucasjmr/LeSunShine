@@ -56,6 +56,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit("User must be between 18 and 122 years old.");
     }
 
+    // Verify if there are spaces in pseudo or email
+    if (strpos($_POST['pseudo'], ' ') !== false || strpos($_POST['email'], ' ') !== false)
+    {
+        echo error_page("Le pseudo ou l'email ne peut pas contenir d'espaces.");
+        exit("Pseudo or email cannot contain spaces.");
+    }
+
+    // Verify if given variables are not too long/ too short
+    if (
+        strlen($form_pseudo) > 16 ||
+        strlen($form_password) > 16 ||
+        strlen($form_email) > 64 ||
+        strlen($form_last_name) > 32 ||
+        strlen($form_first_name) > 32 ||
+        strlen($form_home_adress) > 64 ||
+        strlen($form_custom_message) > 64
+    )
+    {
+        echo error_page("Un ou plusieurs champs dépassent la limite maximum de caractères");
+        exit("One or more fields exceed the maximum length.");
+    }
+    if (
+        strlen($form_pseudo) < 3 ||
+        strlen($form_password) < 3 ||
+        strlen($form_email) < 8 ||
+        strlen($form_last_name) < 2 ||
+        strlen($form_first_name) < 2 ||
+        strlen($form_home_adress) < 12 ||
+        strlen($form_custom_message) < 3
+    )
+    {
+        echo error_page("Un ou plusieurs champs ne font pas la limite minimum de caractères");
+        exit("One or more fields are too short.");
+    }
+
     // Verify if someone already has same pseudo/email
     $loginsFile = fopen("../data/logins.sunshine", "rb"); // Opens in binary to work on linux, windows and macos 
     if (!$loginsFile)
@@ -124,4 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
     // Once signed up, redirect to dashboard
     header("Location: dashboard-html.php");
+}
+else
+{
+    header("Location: sign-up.html");
 }

@@ -1,7 +1,3 @@
-<?php 
-    session_start();
-?>
-
 <html>
 
 <head>
@@ -21,7 +17,7 @@
     <div id="lower">
         <div id="form-box">
             <p id="form-title">Connexion</p>
-            <form action="sign-in.php" method="POST" id="signin">
+            <form action="sign-in.php" method="POST">
                 <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
                 <input type="password" name="password" minlength="3" maxlength="16" placeholder="Mot De Passe">
                 <input type="submit" name="submit" value="Valider">

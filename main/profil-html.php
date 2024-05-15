@@ -16,7 +16,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
 </head>
 
 <body>
-<header>
+    <header>
         <div id="header-container-left">
             <img class="logo" src="../media/logo.png" alt="logo">
             <p id="title">LeSunShine</p>
@@ -73,9 +73,14 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                 <p>Abonnement :
                     <?= $_SESSION['rank'] ?>
                 </p>
-                <p>Date de fin de l'abonnement : 
+                <p>Date de fin de l'abonnement :
                     <?= $_SESSION['exp_date'] ?>
                 </p>
+            </div>
+            <div class="left-box-footer">
+                <div class="button2" onclick="location.href='modify-html.php'">
+                    Modifier
+                </div>
             </div>
         </div>
         <div class="box">
