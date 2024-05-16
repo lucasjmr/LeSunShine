@@ -30,7 +30,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
     <div id="lower">
         <div id="form-box">
             <h1>Rechercher un profil</h1>
-            <form action="sign-in.php" method="POST">
+            <form action="search-result.php" method="POST">
                 <input type="text" name="pseudo" minlength="3" maxlength="16" placeholder="Pseudo">
                 <div class="age">
                     <input class="age-input" type="number" name="age_min" min="18" max="122" placeholder="Age minimum">
@@ -42,11 +42,13 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                 <input type="radio" name="gender" id="female" value="Femme">
                 <label for="female">Femme</label>
 
-                <input type="radio" name="rank" id="silver" value="Silver">
+                <input type="radio" name="rank" id="bronze" value="bronze">
+                <label for="bronze">Bronze rank</label>
+                <input type="radio" name="rank" id="silver" value="silver">
                 <label for="silver">Silver rank</label>
-                <input type="radio" name="rank" id="gold" value="Gold">
+                <input type="radio" name="rank" id="gold" value="gold">
                 <label for="gold">Gold rank</label>
-                <input type="radio" name="rank" id="platinum" value="Platinum">
+                <input type="radio" name="rank" id="platinum" value="platinum">
                 <label for="platinum">Platinum  rank</label>
 
                 <input type="radio" name="photo" id="photo" value="avec">

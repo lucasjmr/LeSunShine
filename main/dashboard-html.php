@@ -23,7 +23,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         </div>
         <div id="header-container-right">
             <div class="button" onclick="location.href='sign-in.html'">
-                Deconnection
+                Changer de compte
             </div>
         </div>
     </header>
@@ -31,7 +31,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
     <div id="lower">
         <div class="box" onclick="location.href='search-html.php'">
             <h1>Recherche</h1>
-            <p>Description</p>
+            <p>Dans cette section vous pourrez rechercher certains profils en fonctions de plusieurs critères comme le pseudo, l'age, le rang, ou encore est-ce que l'utilisateur a renseigné un pseudo. Vous pourrez ensuite contacter la/les personne.s si vous êtes abonné (voir section abonnements).</p>
         </div>
         <div class="box" onclick="location.href='inbox.html'">
             <h1>Messages</h1>
@@ -39,16 +39,16 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         </div>
         <div class="box" onclick="location.href='pricing-html.php'">
             <h1>Abonnements</h1>
-            <p>Description</p>
+            <p>Dans cette section vous pourrez consulter votre abonnement et consulter les autres offres. Il existe 4 rangs distincts. A vous de faire le bon choix et de choisir le rang qui vous convient.</p>
         </div>
         <div class="box" onclick="location.href='profil-html.php'">
             <h1>Profil</h1>
-            <p> Dans cette section, vous pourrez consulter les détails de votre profil, ce qui inclut la
-                partie publique et privée renseignées à votre inscription sur le site.<br><br>
-                Cela comprend pour la partie privée : votre pseudo, votre adresse, et la modfication de votre mot de
-                passe.<br><br>
-                Pour la partie publique, vous pourrez choisir : votre sexe , votre date de naissance, votre profession,
-                votre situation amoureuse et familiale, vos informations physiques, et vos photos.
+            <p> Dans cette section, vous pourrez consulter les détails de votre profil renseignés à votre inscription sur le site.<br><br>
+                Pour la partie publique, vous pourrez consulter : votre pseudo, votre date d'inscription, votre sexe, votre date de naissance, votre age, votre message customisé et vos photos.
+                <br><br>
+                Et pour la partie privée : votre nom, prénom, adresse postale, email, le rang de votre abonnement, ainsi que sa date d'expiration.
+                <br><br>
+                Vous pourrez modifier votre mot de passe ainsi que votre message personnalisé, et ajouter/changer de photo.
             </p>
         </div>
     </div>
