@@ -204,62 +204,65 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         </div>
     </header>
     <div id="lower">
-        <?php
-        foreach ($intersection as $elmt) :
-            // Make sure you don't find yourself in search
-            if ($elmt == $_SESSION['pseudo'])
-            {
-                continue;
-            }
+    <?php if (empty($intersection)) : ?>
+            <p id="no-result">Aucun résultat trouvé.</p>
+        <?php else : ?>
+            <?php foreach ($intersection as $elmt) : ?>
+                <?php
+                // Make sure you don't find yourself in search
+                if ($elmt == $_SESSION['pseudo']) {
+                    continue;
+                }
 
-            // Get all the infos with user file
-            $userFile = fopen("../data/users/$elmt.sunshine", "rb");
-            if (!$userFile)
-            {
-                exit("Something went wrong while trying to open user file");
-            }
+                // Get all the infos with user file
+                $userFile = fopen("../data/users/$elmt.sunshine", "rb");
+                if (!$userFile) {
+                    exit("Something went wrong while trying to open user file");
+                }
 
-            $content = fread($userFile, filesize("../data/users/$elmt.sunshine"));
-            if (!fclose($userFile))
-            {
-                exit("Something went wrong while trying to close user file");
-            }
+                $content = fread($userFile, filesize("../data/users/$elmt.sunshine"));
+                if (!fclose($userFile)) {
+                    exit("Something went wrong while trying to close user file");
+                }
 
-            $array = explode("\r\n", $content);
+                $array = explode("\r\n", $content);
 
-            // Get variables
-            $pseudo = $array[0];
-            $signup_date = $array[1];
-            $gender = $array[2];
-            $birthdate = $array[3];
-            $message = $array[4];
+                // Get variables
+                $pseudo = $array[0];
+                $signup_date = $array[1];
+                $gender = $array[2];
+                $birthdate = $array[3];
+                $message = $array[4];
 
-            // Get age 
-            $date = new DateTime($birthdate);
-            $now = new DateTime();
-            $interval = $now->diff($date);
-            $age = $interval->y;
-        ?>
-            <div class="result">
-                <div class="content">
-                    <div class="basic">
-                        <p>Pseudo : <?= $pseudo ?></p>
-                        <p>Genre : <?= $gender ?></p>
-                        <p>Age : <?= $age ?></p>
-                        <p>Date d'inscription : <?= $signup_date ?></p>
+                // Get age 
+                $date = new DateTime($birthdate);
+                $now = new DateTime();
+                $interval = $now->diff($date);
+                $age = $interval->y;
+
+                $url = "message.php?send=" . $_SESSION['pseudo'] . "&receive=" . $pseudo;
+                ?>
+                <div class="result">
+                    <div class="content">
+                        <div class="basic">
+                            <p>Pseudo : <?= $pseudo ?></p>
+                            <p>Genre : <?= $gender ?></p>
+                            <p>Age : <?= $age ?></p>
+                            <p>Date d'inscription : <?= $signup_date ?></p>
+                        </div>
+                        <div class="message">
+                            Message : <?= $message ?>
+                        </div>
+                        <div class="sendmessage" onclick="location.href='<?=$url?>'">
+                            Envoyer Message
+                        </div>
                     </div>
-                    <div class="message">
-                        Message : <?= $message ?>
-                    </div>
-                    <div class="sendmessage">
-                        Envoyer Message
+                    <div class="profil-image">
+                        <img src="../data/images/<?php echo $elmt ?>.jpg" alt="L'utilisateur n'a pas d'image.">
                     </div>
                 </div>
-                <div class="profil-image">
-                    <img src="../data/images/<?php echo $elmt ?>.jpg" alt="L'utilisateur n'a pas d'image.">
-                </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </body>
 
