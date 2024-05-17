@@ -116,5 +116,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 }
 else
 {
-    header("Location: sign-in.html");
+    header("Location: sign-in-html.php");
 }

@@ -1,3 +1,33 @@
+<?php
+
+// Verify if folders are present, if not, create them
+if (!is_dir("../data"))
+{
+    mkdir("../data");
+}
+if (!is_dir("../data/images"))
+{
+    mkdir("../data/images");
+}
+if (!is_dir("../data/users"))
+{
+    mkdir("../data/users");
+}
+if (!file_exists("../data/logins.sunshine"))
+{
+    $userfile = fopen("../data/logins.sunshine", "w");
+    if (!$userfile)
+    {
+        exit('A problem occured while creating logins file');
+    }
+    if (!fclose($userfile))
+    {
+        exit("Something went wrong while trying to close logins file");
+    }
+}
+
+?>
+
 <html>
 
 <head>
@@ -41,7 +71,7 @@
                     <input type="submit" name="submit" value="Valider" id="end_of_scroll">
                 </form>
             </div>
-            <p id="no-account">Déjà un compte ? <a href="sign-in.html">Se connecter</p></a>
+            <p id="no-account">Déjà un compte ? <a href="sign-in-html.php">Se connecter</p></a>
         </div>
     </div>
 </body>

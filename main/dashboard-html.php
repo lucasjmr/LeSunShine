@@ -22,7 +22,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
             <p id="title">LeSunShine</p>
         </div>
         <div id="header-container-right">
-            <div class="button" onclick="location.href='sign-in.html'">
+            <div class="button" onclick="location.href='sign-in-html.php'">
                 Changer de compte
             </div>
         </div>
