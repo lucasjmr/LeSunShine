@@ -18,12 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     // The goal : fill 6 arrays : pseudos, pseudo user is searching for, age, gender, rank, photo
     $pseudo_array = array();
     $user_selected_pseudo_array = array();
-    $age_array = array();
+    $min_age_array = array();
+    $max_age_array = array();
     $gender_array = array();
     $rank_array = array();
     $photo_array = array();
 
-    $is_age_set = 0;
+    $is_min_age_set = 0;
+    $is_max_age_set = 0;
     $is_pseudo_set = 0;
     $is_gender_set = 0;
     $is_rank_set = 0;
@@ -53,24 +55,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
 
     // Verify all given informations
-    if ($is_age_set && (!is_numeric($_POST['age_min']) || !is_numeric($_POST['age_max'])))
+    if ($is_min_age_set && !is_numeric($_POST['age_min']))
     {
         echo error_page("Des nombres doivent être entrés dans les champs d'âge ...");
         exit("Not numbers given in age fields");
     }
-    if (isset($_POST['age_min']) && !empty($_POST['age_min']) && isset($_POST['age_max']) && !empty($_POST['age_max']))
+    if ($is_max_age_set && !is_numeric($_POST['age_max']))
     {
-        $is_age_set = 1;
-        if (($_POST['age_min'] > $_POST['age_max']) || $_POST['age_min'] < 18 || $_POST['age_max'] > 122)
+        echo error_page("Des nombres doivent être entrés dans les champs d'âge ...");
+        exit("Not numbers given in age fields");
+    }
+    if (isset($_POST['age_min']) && !empty($_POST['age_min']))
+    {
+        $is_min_age_set = 1;
+        if ($_POST['age_min'] < 18)
         {
-            echo error_page("Veuillez entrer des ages corrects. (entre 18 et 122 ans).");
-            exit("Wrong age numbers given");
+            echo error_page("L'age minimum est de 18 ans.");
+            exit("Wrong age number given");
         }
     }
-    else if ((isset($_POST['age_min']) && !empty($_POST['age_min'])) != (isset($_POST['age_max']) && !empty($_POST['age_max'])))
+    if (isset($_POST['age_max']) && !empty($_POST['age_max']))
     {
-        echo error_page("Veuillez remplir soit tous les champs d'age soit aucun. (entre 18 et 122 ans).");
-        exit("Wrong age numbers given");
+        $is_max_age_set = 1;
+        if ($_POST['age_max'] > 122)
+        {
+            echo error_page("L'age maximum est de 122 ans");
+            exit("Wrong age number given");
+        }
+    }
+    if ($is_max_age_set && $is_min_age_set && ($_POST['age_min'] > $_POST['age_max']))
+    {
+        echo error_page("Veuillez entrer les ages minimum et maximum dans les bons champs.");
+        exit("age_min > age_max");
     }
 
     if ($is_pseudo_set && (strlen($_POST['pseudo']) > 16 || strlen($_POST['pseudo']) < 3))
@@ -98,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     // Open every user file and fill the arrays when infos are needed
     for ($i = 0; $i < count($pseudo_array); $i++)
     {
-        // Get current user infos
+        // Get current user pseudo
         $current_pseudo = $pseudo_array[$i];
         $userFile = fopen("../data/users/$current_pseudo.sunshine", "rb");
         if (!$userFile)
@@ -120,17 +136,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             exit("Something went wrong while trying to close user file");
         }
 
-        if ($is_age_set) // If age is set in form
+        if ($is_min_age_set) // If min age is set in form
         {
-            if ($current_age >= $_POST['age_min'] && $current_age <= $_POST['age_max']) // If age of current pseudo is what the user is searching for
+            if ($current_age >= $_POST['age_min']) // If age of current pseudo is what the user is searching for
             {
-                array_push($age_array, $current_pseudo); // Add the current pseudo in array
+                array_push($min_age_array, $current_pseudo); // Add the current pseudo in array
             }
         }
         else // else all users meet critera
         {
-            $age_array = $pseudo_array;
+            $min_age_array = $pseudo_array;
         }
+
+        if ($is_max_age_set) // If min age is set in form
+        {
+            if ($current_age <= $_POST['age_max']) // If age of current pseudo is what the user is searching for
+            {
+                array_push($max_age_array, $current_pseudo); // Add the current pseudo in array
+            }
+        }
+        else // else all users meet critera
+        {
+            $max_age_array = $pseudo_array;
+        }
+
         if ($is_pseudo_set)
         {
             if ($current_pseudo == $_POST['pseudo'])
@@ -142,6 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $user_selected_pseudo_array = $pseudo_array;
         }
+
         if ($is_gender_set)
         {
             if ($content[2] == $_POST['gender'])
@@ -153,6 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $gender_array = $pseudo_array;
         }
+
         if ($is_rank_set)
         {
             if ($content[9] == $_POST['rank'])
@@ -164,6 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         {
             $rank_array = $pseudo_array;
         }
+
         if ($is_photo_set)
         {
             if ((file_exists("../data/images/$current_pseudo.jpg") && $_POST['photo'] == "avec") || (!file_exists("../data/images/$current_pseudo.jpg") && $_POST['photo'] == "sans"))
@@ -178,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
 
     // Keep the intersection of all arrays : it keeps user pseudos wich are meeting all requirements
-    $intersection = array_intersect($user_selected_pseudo_array, $age_array, $gender_array, $rank_array, $photo_array);
+    $intersection = array_intersect($user_selected_pseudo_array, $min_age_array, $max_age_array, $gender_array, $rank_array, $photo_array);
 }
 ?>
 
@@ -204,24 +236,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         </div>
     </header>
     <div id="lower">
-    <?php if (empty($intersection)) : ?>
+        <?php if (empty($intersection)) : ?>
             <p id="no-result">Aucun résultat trouvé.</p>
         <?php else : ?>
             <?php foreach ($intersection as $elmt) : ?>
                 <?php
                 // Make sure you don't find yourself in search
-                if ($elmt == $_SESSION['pseudo']) {
+                if ($elmt == $_SESSION['pseudo'])
+                {
                     continue;
+                }
+                
+                // Add name of user into the visitors file of $current_pseudo  
+                $visitorFile = fopen("../data/visitors/$elmt.sunshine", "wb+"); // Opens in binary to work on linux, windows and macos 
+                if (!$visitorFile)
+                {
+                    exit("Something went wrong while trying to open visitors file");
+                }
+
+                // Verify if user isn't alrdy in visitor file
+                if (filesize("../data/visitors/$elmt.sunshine") == 0) // file empty so not in file
+                {
+                    fprintf($visitorFile, "%s\r\n", $_SESSION['pseudo']);
+                }
+                else
+                {
+                    $visitorContent = fread($visitorFile, filesize("../data/visitors/$elmt.sunshine"));
+                    $visitorArray = explode("\r\n", $visitorContent);
+                    if (!in_array($_SESSION['pseudo'], $visitorArray))
+                    {
+                        // If everything is okay, write pseudo in visitor file
+                        fprintf($visitorFile, "%s\r\n", $_SESSION['pseudo']);
+                    }
+                }
+
+                if (!fclose($visitorFile))
+                {
+                    exit("Something went wrong while trying to close visitors file");
                 }
 
                 // Get all the infos with user file
                 $userFile = fopen("../data/users/$elmt.sunshine", "rb");
-                if (!$userFile) {
+                if (!$userFile)
+                {
                     exit("Something went wrong while trying to open user file");
                 }
 
                 $content = fread($userFile, filesize("../data/users/$elmt.sunshine"));
-                if (!fclose($userFile)) {
+                if (!fclose($userFile))
+                {
                     exit("Something went wrong while trying to close user file");
                 }
 
@@ -253,7 +316,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                         <div class="message">
                             Message : <?= $message ?>
                         </div>
-                        <div class="sendmessage" onclick="location.href='<?=$url?>'">
+                        <div class="sendmessage" onclick="location.href='<?= $url ?>'">
                             Envoyer Message
                         </div>
                     </div>

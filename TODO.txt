@@ -5,3 +5,4 @@ savoir si mettre toutes les infos en obligatoire est autorisé
 creer les dossiers images et users si non présents
 demander le barème des points
 dans recherche de profil, enlever le fait de devoir mettre les deux ages
+voir si ouvrir fichier en mode binaire marche vraiment

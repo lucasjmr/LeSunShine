@@ -157,6 +157,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $_SESSION['rank'] = $rank;
     $_SESSION['exp_date'] = $exp_date;
 
+    // Create the visitors file
+    $visitorfile = fopen("../data/visitors/$form_pseudo.sunshine", "w");
+    if (!$visitorfile)
+    {
+        exit('A problem occured while creating logins file');
+    }
+    if (!fclose($visitorfile))
+    {
+        exit("Something went wrong while trying to close logins file");
+    }
+
     // Once signed up, redirect to dashboard
     header("Location: dashboard-html.php");
 }
