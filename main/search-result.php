@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
 {
     header("Location: sign-in-html.php");
+    exit();
 }
 
 function error_page($message)
@@ -212,6 +213,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     // Keep the intersection of all arrays : it keeps user pseudos wich are meeting all requirements
     $intersection = array_intersect($user_selected_pseudo_array, $min_age_array, $max_age_array, $gender_array, $rank_array, $photo_array);
 }
+else 
+{
+    header("Location: search-html.php");
+}
 ?>
 
 <html>
@@ -246,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 {
                     continue;
                 }
-                
+
                 // Add name of user into the visitors file of $current_pseudo  
                 $visitorFile = fopen("../data/visitors/$elmt.sunshine", "wb+"); // Opens in binary to work on linux, windows and macos 
                 if (!$visitorFile)
@@ -296,6 +301,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 $gender = $array[2];
                 $birthdate = $array[3];
                 $message = $array[4];
+                $rank = $array[9];
 
                 // Get age 
                 $date = new DateTime($birthdate);
@@ -303,7 +309,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 $interval = $now->diff($date);
                 $age = $interval->y;
 
-                $url = "message.php?send=" . $_SESSION['pseudo'] . "&receive=" . $pseudo;
                 ?>
                 <div class="result">
                     <div class="content">
@@ -311,12 +316,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                             <p>Pseudo : <?= $pseudo ?></p>
                             <p>Genre : <?= $gender ?></p>
                             <p>Age : <?= $age ?></p>
+                            <p>Rank : <?= $rank ?></p>
                             <p>Date d'inscription : <?= $signup_date ?></p>
                         </div>
                         <div class="message">
                             Message : <?= $message ?>
                         </div>
-                        <div class="sendmessage" onclick="location.href='<?= $url ?>'">
+                        <div class="sendmessage" onclick="location.href='message.php?send=<?= $pseudo ?>'">
                             Envoyer Message
                         </div>
                     </div>

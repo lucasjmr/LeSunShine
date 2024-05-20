@@ -17,6 +17,10 @@ if (!is_dir("../data/visitors"))
 {
     mkdir("../data/visitors");
 }
+if (!is_dir("../data/conversations"))
+{
+    mkdir("../data/conversations");
+}
 if (!file_exists("../data/logins.sunshine"))
 {
     $userfile = fopen("../data/logins.sunshine", "w");

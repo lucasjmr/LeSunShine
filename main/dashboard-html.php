@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
 {
     header("Location: sign-in-html.php");
+    exit();
 }
 ?>
 
@@ -33,7 +34,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
             <h1>Recherche</h1>
             <p>Dans cette section vous pourrez rechercher certains profils en fonctions de plusieurs critères comme le pseudo, l'age, le rang, ou encore est-ce que l'utilisateur a renseigné un pseudo. Vous pourrez ensuite contacter la/les personne.s si vous êtes abonné (voir section abonnements).</p>
         </div>
-        <div class="box" onclick="location.href='inbox.html'">
+        <div class="box" onclick="location.href='inbox-html.php'">
             <h1>Messages</h1>
             <p>Description</p>
         </div>
@@ -44,9 +45,9 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         <div class="box" onclick="location.href='profil-html.php'">
             <h1>Profil</h1>
             <p> Dans cette section, vous pourrez consulter les détails de votre profil renseignés à votre inscription sur le site.<br><br>
-                Pour la partie publique, vous pourrez consulter : votre pseudo, votre date d'inscription, votre sexe, votre date de naissance, votre age, votre message customisé et vos photos.
+                Pour la partie publique, vous pourrez consulter : votre pseudo, votre date d'inscription, votre sexe, votre date de naissance, votre age, le rang de votre abonnement, votre message customisé et vos photos.
                 <br><br>
-                Et pour la partie privée : votre nom, prénom, adresse postale, email, le rang de votre abonnement, ainsi que sa date d'expiration.
+                Et pour la partie privée : votre nom, prénom, adresse postale, email, et la date d'expiration de votre rang.
                 <br><br>
                 Vous pourrez modifier votre mot de passe ainsi que votre message personnalisé, et ajouter/changer de photo.
             </p>

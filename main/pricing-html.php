@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
 {
     header("Location: sign-in-html.php");
+    exit();
 }
 ?>
 

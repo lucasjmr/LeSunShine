@@ -8,7 +8,7 @@
 }
 
 body {
-    background-image: url("../media/upload.jpg");
+    background-image: url("../media/message.jpg");
     background-size: cover;
 }
 
@@ -63,14 +63,17 @@ header {
     display: flex;
 }
 
+header img {
+    padding-right: 10px;
+}
+
 .box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: "Roboto", sans-serif;
-    background-color: #ffffff;
-    padding: 2% 5%;
+    padding: 2% 2%;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
@@ -78,49 +81,38 @@ header {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     color: white;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 25%;
+    height: 30%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-header img {
-    padding-right: 10px;
-}
-
-#file {
-    display: none;
-}
-
-label,
-input[type="submit"] {
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    background-color: #ffffff;
-    padding: 10%;
-    font-size: 16px;
+textarea {
+    resize: none;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    border-radius: 50px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     color: white;
-    font-weight: bold;
-    width: 250px;
+    width: 100%;
+    padding: 1.5%;
+    border-radius: 10px;
+    height: 70%;
+    font-size: 22px;
 }
 
-label {
-    margin-bottom: 20px;
+textarea::placeholder {
+    color: white;
 }
 
 input[type="submit"] {
-    background: white;
+    background-color: white;
     color: black;
     cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 5%;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    padding: 5%;
+    font-size: 16px;
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
 }

@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connection
 {
     header("Location: sign-in-html.php");
+    exit();
 }
 ?>
 
@@ -52,6 +53,9 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                     echo "$interval->y ans";
                     ?>
                 </p>
+                <p>Abonnement :
+                    <?= $_SESSION['rank'] ?>
+                </p>
                 <p>Message customisé :
                     <?= $_SESSION['custom_message'] ?>
                 </p>
@@ -69,9 +73,6 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                 </p>
                 <p>Email :
                     <?= $_SESSION['email'] ?>
-                </p>
-                <p>Abonnement :
-                    <?= $_SESSION['rank'] ?>
                 </p>
                 <p>Date de fin de l'abonnement :
                     <?= $_SESSION['exp_date'] ?>
