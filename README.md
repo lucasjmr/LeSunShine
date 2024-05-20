@@ -18,3 +18,5 @@ Suite au setup de github desktop tardif, j'ai dû supprimer l'ancien dépôt pou
 16/05/2024 : Syteme de recherche (backend) terminé
 
 17/05/2024 : Petits ajouts et améliorations mineures de la recherche
+
+20/05/2024 : Messagerie terminée (ajout block + report plus tard)
