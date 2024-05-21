@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
 * {
     box-sizing: border-box;
@@ -7,9 +7,18 @@
     padding: 0;
 }
 
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    /* Empêche le défilement */
+}
+
 body {
     background-image: url("../media/inbox.jpg");
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -17,7 +26,6 @@ header {
     height: 10vh;
     align-items: center;
     justify-content: space-between;
-    /* Allows to push items to left and right, text to middle */
 }
 
 #header-container-right {
@@ -46,7 +54,6 @@ header {
 .button {
     display: flex;
     padding: 20px;
-    padding: 20px;
     margin-right: 10px;
     justify-content: center;
     font-size: 18px;
@@ -63,19 +70,27 @@ header img {
 }
 
 #lower {
-    height: 90vh;
+    flex: 1;
     display: flex;
+    overflow: hidden;
 }
 
 .conversations {
     width: 85%;
+    display: flex;
+    flex-direction: column;
 }
 
-.recipients {
+.leftpanel {
     width: 15%;
-    overflow-y: auto;
-    padding: 2%;
     margin: 0.8%;
+}
+
+.recipients, .seenby {
+    height: 50%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 5%;
     text-align: center;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -84,10 +99,10 @@ header img {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-.recipients p {
+.recipients p, .seenby p{
     color: white;
     margin-bottom: 30px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     font-family: "Roboto", sans-serif;
 }
@@ -106,8 +121,24 @@ header img {
     margin-bottom: 10px;
 }
 
+.conv_name {
+    display: inline-block;
+    padding: 1%;
+    text-align: center;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 0.8%;
+}
+
 .content {
-    height: 90%;
+    flex: 1;
     overflow-y: auto;
     word-wrap: break-word;
     display: flex;
@@ -152,7 +183,8 @@ input::placeholder {
     color: white;
 }
 
-.left, .right {
+.left,
+.right {
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
@@ -163,10 +195,11 @@ input::placeholder {
     color: white;
     margin-top: 1%;
     padding: 1%;
+    cursor: pointer;
 }
 
 .left {
-    align-self: flex-start; 
+    align-self: flex-start;
     background-color: #f0f0f0;
     color: #333;
 }

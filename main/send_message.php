@@ -18,7 +18,7 @@ function error_page_user($message) // Special error function : avoid getting mes
 {
     $htmlTemplate = file_get_contents('error.html');
     $errorPage = str_replace('{error_message}', $message, $htmlTemplate);
-    $errorPage = str_replace('history.back()', "location.href='search-html.php'", $errorPage);
+    $errorPage = str_replace('history.back()', "location.href='dashboard-html.php'", $errorPage);
     return $errorPage;
 }
 
@@ -52,6 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     {
         echo error_page("Les retours à la ligne ne sont pas autorisés dans le message.");
         exit("Newline characters detected in message");
+    }
+    if (!file_exists("../data/users/$recipient.sunshine"))
+    {
+        echo error_page("L'utilisateur $recipient n'existe pas.");
+        exit("The recipient does not exist.");
     }
 
     $sender = $_SESSION['pseudo'];

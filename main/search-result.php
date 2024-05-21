@@ -253,7 +253,7 @@ else
                 }
 
                 // Add name of user into the visitors file of $current_pseudo  
-                $visitorFile = fopen("../data/visitors/$elmt.sunshine", "wb+"); // Opens in binary to work on linux, windows and macos 
+                $visitorFile = fopen("../data/visitors/$elmt.sunshine", "ab+"); // Opens in binary to work on linux, windows and macos 
                 if (!$visitorFile)
                 {
                     exit("Something went wrong while trying to open visitors file");
@@ -266,7 +266,7 @@ else
                 }
                 else
                 {
-                    $visitorContent = fread($visitorFile, filesize("../data/visitors/$elmt.sunshine"));
+                    $visitorContent = fread($visitorFile, filesize("../data/visitors/$elmt.sunshine")); // could also use file function
                     $visitorArray = explode("\r\n", $visitorContent);
                     if (!in_array($_SESSION['pseudo'], $visitorArray))
                     {

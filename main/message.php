@@ -36,6 +36,13 @@ if (!isset($_GET['send']))
 
 $recipient = htmlspecialchars($_GET['send']);
 
+// Verify user exists
+if (!file_exists("../data/users/$recipient.sunshine"))
+{
+    echo error_page("L'utilisateur $recipient n'existe pas.");
+    exit("The recipient does not exist");
+}
+
 // Get the rank of recipient
 $userFile = fopen("../data/users/$recipient.sunshine", "rb");
 if (!$userFile)
