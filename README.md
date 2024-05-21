@@ -20,3 +20,5 @@ Suite au setup de github desktop tardif, j'ai dû supprimer l'ancien dépôt pou
 17/05/2024 : Petits ajouts et améliorations mineures de la recherche
 
 20/05/2024 : Messagerie terminée (ajout block + report plus tard)
+
+21/05/2024 : Ajout "utilisateurs ayant vu votre profil" dans la messagerie + ajout suppression et signalement des messages
