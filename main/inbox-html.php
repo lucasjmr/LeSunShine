@@ -83,6 +83,11 @@ function isVisitorInConversations($visitor, $conversations, $currentUser)
     return false;
 }
 
+function startsWith($stringToSearchIn, $stringToCheck)
+{
+    return strpos($stringToSearchIn, $stringToCheck) === 0; // strpos returns 0 if the postion of $stringToCheck is the first string in $stringTOSearchIn
+}
+
 ?>
 
 <html>
@@ -148,9 +153,24 @@ function isVisitorInConversations($visitor, $conversations, $currentUser)
                 <?php if (empty($messages) && !empty($selectedConversation)) : ?>
                     <p class="left">Aucun message, envoyez-en un pour commencer la discussion</p>
                 <?php else : ?>
-                    <?php foreach ($messages as $message) : ?>
+                    <?php foreach ($messages as $index => $message) : ?>
                         <?php $messageParts = explode(':', $message, 2); ?>
-                        <p class="<?= ($messageParts[0] == '<' . $currentUser . '>') ? 'right' : 'left' ?>"><?= $messageParts[1] ?></p>
+                        <div class="<?= ($messageParts[0] == '<' . $currentUser . '>') ? 'right' : 'left' ?>">
+                            <span><?= htmlspecialchars($messageParts[1]) ?></span>
+                            <?php if ($messageParts[0] == '<' . $currentUser . '>') : ?>
+                                <div class="message-options">
+                                    <button onclick="location.href='delete_message.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
+                                        <img src="../media/delete.png" alt="Supprimer" class="img_left">
+                                    </button>
+                                </div>
+                            <?php else : ?>
+                                <div class="message-options">
+                                    <button onclick="location.href='report_message.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
+                                        <img src="../media/report.png" alt="Signaler" class="img_right">
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>

@@ -195,7 +195,6 @@ input::placeholder {
     color: white;
     margin-top: 1%;
     padding: 1%;
-    cursor: pointer;
 }
 
 .left {
@@ -208,4 +207,37 @@ input::placeholder {
     align-self: flex-end;
     background-color: #0096FF;
     color: white;
+}
+
+.message {
+    position: relative;
+}
+
+.message-options {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.message-options button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.message-options img {
+    width: 30px;
+    height: 30px;
+}
+
+.img_right {
+    right: 0;
+    transform: translateX(170%);
+}
+
+.img_left {
+    left: 0;
+    transform: translateX(-200%);
 }

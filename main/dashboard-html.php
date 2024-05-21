@@ -36,7 +36,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         </div>
         <div class="box" onclick="location.href='inbox-html.php'">
             <h1>Messages</h1>
-            <p>Description</p>
+            <p>Dans cette section vous pourrez consulter toutes vos conversations avec les utilisateurs du site. Vous pourrez évidemment envoyer des messages, et démarrer de nouvelles conversations avec les personnes ayant visité votre profil</p>
         </div>
         <div class="box" onclick="location.href='pricing-html.php'">
             <h1>Abonnements</h1>
