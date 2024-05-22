@@ -6,3 +6,4 @@ demander le barème des points
 voir si ouvrir fichier en mode binaire marche vraiment
 ajouter sur page index "le seul site pour forgerons" pour rappeler theme
 mettre des caractères speciaux dans le pseudo et voir si ca genere pas d'erreur
+ajouter plus de données sur les profils
