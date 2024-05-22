@@ -186,6 +186,9 @@ input::placeholder {
 
 .left,
 .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
@@ -196,28 +199,35 @@ input::placeholder {
     color: white;
     margin-top: 1%;
     padding: 1%;
+    align-self: flex-start; /* aligner a gauche par default */
+}
+
+.right {
+    background-color: #0096FF;
+    color: white;
+    align-self: flex-end;
 }
 
 .left {
-    align-self: flex-start;
     background-color: #f0f0f0;
     color: #333;
 }
 
-.right {
-    align-self: flex-end;
-    background-color: #0096FF;
-    color: white;
+.message {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
-.message {
-    position: relative;
+.message-content {
+    flex-grow: 1;
+    word-wrap: break-word; /* Permettre le retour à la ligne automatique quand le message est trop long :) */
 }
 
 .message-options {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .message-options button {
@@ -225,7 +235,6 @@ input::placeholder {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-left: 5px;
 }
 
 .message-options img {
@@ -233,12 +242,3 @@ input::placeholder {
     height: 30px;
 }
 
-.img_right {
-    right: 0;
-    transform: translateX(200%);
-}
-
-.img_left {
-    left: 0;
-    transform: translateX(-200%);
-}

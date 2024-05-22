@@ -24,7 +24,7 @@ function error_page_user($message) // Special error function : avoid getting mes
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    $message = trim(htmlspecialchars($_POST['message']));
+    $message = trim($_POST['message']); // htmlspecialchars breaks some caracters, so we use it before displaying to the webpage, instead of here
     $recipient = trim(htmlspecialchars($_POST['recipient']));
 
     if (!isset($message) || empty($message))
