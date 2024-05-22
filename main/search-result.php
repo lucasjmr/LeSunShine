@@ -213,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     // Keep the intersection of all arrays : it keeps user pseudos wich are meeting all requirements
     $intersection = array_intersect($user_selected_pseudo_array, $min_age_array, $max_age_array, $gender_array, $rank_array, $photo_array);
 }
-else 
+else
 {
     header("Location: search-html.php");
 }
@@ -327,7 +327,17 @@ else
                         </div>
                     </div>
                     <div class="profil-image">
-                        <img src="../data/images/<?php echo $elmt ?>.jpg" alt="L'utilisateur n'a pas d'image.">
+                        <img src="<?php
+                                    $name = $_SESSION['pseudo'];
+                                    if (file_exists("../data/images/$pseudo.jpg"))
+                                    {
+                                        echo "../data/images/$pseudo.jpg";
+                                    }
+                                    else
+                                    {
+                                        echo "../media/default.jpg";
+                                    }
+                                    ?>" alt="image de profil par default manquante.">
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -86,18 +86,20 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         </div>
         <div class="box">
             <h1>Photo</h1>
-            <div class="image-container">
-                <img src="<?php
-                    $name = $_SESSION['pseudo'];
-                    if (file_exists("../data/images/$name.jpg"))
-                    {
-                        echo "../data/images/$name.jpg";
-                    }
-                    else 
-                    {
-                        echo "../media/default.jpg";
-                    }
-                ?>" alt="image de profil par default manquante.">
+            <div class="container-parent">
+                <div class="image-container">
+                    <img src="<?php
+                                $name = $_SESSION['pseudo'];
+                                if (file_exists("../data/images/$name.jpg"))
+                                {
+                                    echo "../data/images/$name.jpg";
+                                }
+                                else
+                                {
+                                    echo "../media/default.jpg";
+                                }
+                                ?>" alt="image de profil par default manquante.">
+                </div>
             </div>
             <div id="upload-form" onclick="location.href='upload-html.php'">
                 Uploader une image
