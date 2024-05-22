@@ -52,14 +52,68 @@ if ($_SESSION['gender'] != "Femme")
                 }
                 else if ($_SESSION['rank'] == "silver")
                 {
-                     
+                    $_SESSION['rank'] = "silver";
+                    $pseudo = $_SESSION['pseudo'];
+
+                    // Get old expiration date
+                    $userFile = fopen("../data/users/$pseudo.sunshine", "rb");
+                    if (!$userFile)
+                    {
+                        exit("Something went wrong while trying to open user file");
+                    }
+
+                    $content = fread($userFile, filesize("../data/users/$pseudo.sunshine"));
+                    $array = explode("\r\n", $content);
+
+                    if (!fclose($userFile))
+                    {
+                        exit("Something went wrong while trying to close user file");
+                    }
+
+                    $lastExpDate = $array[10]; // old exp date is in $array[10];
+                    $exp_date = DateTime::createFromFormat('Y-m-d', $lastExpDate);
+                    $exp_date->add(new DateInterval('P1M'));
+                    $exp_date = $exp_date->format('Y-m-d');
+                    $_SESSION['exp_date'] = $exp_date;
+
+                    // Update user info file
+                    update_user_info();
                 }
                 break;
             case "gold":
-                if ($_SESSION['rank'] == "bronze" || $_SESSION['rank'] == "silver")
+                if ($_SESSION['rank'] == "bronze")
                 {
                     $_SESSION['rank'] = "gold";
                     $exp_date = new DateTime();
+                    $exp_date->add(new DateInterval('P1Y'));
+                    $exp_date = $exp_date->format('Y-m-d');
+                    $_SESSION['exp_date'] = $exp_date;
+
+                    // Update user info file
+                    update_user_info();
+                }
+                else if ($_SESSION['rank'] == "silver" || $_SESSION['rank'] == "gold")
+                {
+                    $_SESSION['rank'] = "gold";
+                    $pseudo = $_SESSION['pseudo'];
+
+                    // Get old expiration date
+                    $userFile = fopen("../data/users/$pseudo.sunshine", "rb");
+                    if (!$userFile)
+                    {
+                        exit("Something went wrong while trying to open user file");
+                    }
+
+                    $content = fread($userFile, filesize("../data/users/$pseudo.sunshine"));
+                    $array = explode("\r\n", $content);
+
+                    if (!fclose($userFile))
+                    {
+                        exit("Something went wrong while trying to close user file");
+                    }
+
+                    $lastExpDate = $array[10]; // old exp date is in $array[10];
+                    $exp_date = DateTime::createFromFormat('Y-m-d', $lastExpDate);
                     $exp_date->add(new DateInterval('P1Y'));
                     $exp_date = $exp_date->format('Y-m-d');
                     $_SESSION['exp_date'] = $exp_date;
