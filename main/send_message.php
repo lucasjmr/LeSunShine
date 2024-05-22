@@ -30,33 +30,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if (!isset($message) || empty($message))
     {
         echo error_page("Vous devez saisir un message.");
-        exit("Message cannot be empty.");
+        exit();
     }
     if (!isset($recipient) || empty($recipient))
     {
         echo error_page("Aucun destinataire.");
-        exit("Recipient is empty.");
+        exit();
     }
     if (strlen($_POST['message']) > 128 || strlen($_POST['message']) < 2)
     {
         echo error_page("Vous devez respecter la longueur des champs.");
-        exit("Wrong message length.");
+        exit();
     }
     if ($_POST['recipient'] == $_SESSION['pseudo'])
     {
         echo error_page("Vous ne pouvez pas envoyer un message à vous-même.");
-        exit("User can't send message to himself.");
+        exit();
     }
 
     if (strpos($message, "\n") !== false || strpos($message, "\r") !== false)
     {
         echo error_page("Les retours à la ligne ne sont pas autorisés dans le message.");
-        exit("Newline characters detected in message");
+        exit();
     }
     if (!file_exists("../data/users/$recipient.sunshine"))
     {
         echo error_page("L'utilisateur $recipient n'existe pas.");
-        exit("The recipient does not exist.");
+        exit();
     }
 
     $sender = $_SESSION['pseudo'];
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if ($recipient_rank == "bronze")
     {
         echo error_page_user("Le destinataire n'est pas abonné.");
-        exit("The recipient isnt subscribed.");
+        exit();
     }
 
     // Create filename for the conversation -> avoid getting 2 different conversation files

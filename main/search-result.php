@@ -59,12 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if ($is_min_age_set && !is_numeric($_POST['age_min']))
     {
         echo error_page("Des nombres doivent être entrés dans les champs d'âge ...");
-        exit("Not numbers given in age fields");
+        exit();
     }
     if ($is_max_age_set && !is_numeric($_POST['age_max']))
     {
         echo error_page("Des nombres doivent être entrés dans les champs d'âge ...");
-        exit("Not numbers given in age fields");
+        exit();
     }
     if (isset($_POST['age_min']) && !empty($_POST['age_min']))
     {
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($_POST['age_min'] < 18)
         {
             echo error_page("L'age minimum est de 18 ans.");
-            exit("Wrong age number given");
+            exit();
         }
     }
     if (isset($_POST['age_max']) && !empty($_POST['age_max']))
@@ -81,19 +81,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($_POST['age_max'] > 122)
         {
             echo error_page("L'age maximum est de 122 ans");
-            exit("Wrong age number given");
+            exit();
         }
     }
     if ($is_max_age_set && $is_min_age_set && ($_POST['age_min'] > $_POST['age_max']))
     {
         echo error_page("Veuillez entrer les ages minimum et maximum dans les bons champs.");
-        exit("age_min > age_max");
+        exit();
     }
 
     if ($is_pseudo_set && (strlen($_POST['pseudo']) > 16 || strlen($_POST['pseudo']) < 3))
     {
         echo error_page("Veuillez remplir un pseudo de la bonne taille. (entre 3 et 16 caractères).");
-        exit("Wrong pseudo length");
+        exit();
     }
     if (isset($_POST['pseudo']) && !empty($_POST['pseudo']))
     {
@@ -241,7 +241,7 @@ else
         </div>
     </header>
     <div id="lower">
-        <?php if (empty($intersection)) : ?>
+        <?php if (empty($intersection) || (sizeof($intersection) == 1 && $intersection[0] == $_SESSION['pseudo'])) : ?>
             <p id="no-result">Aucun résultat trouvé.</p>
         <?php else : ?>
             <?php foreach ($intersection as $elmt) : ?>

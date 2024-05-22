@@ -10,7 +10,7 @@ if (!isset($_SESSION['pseudo']))
 if ($_SESSION['rank'] == "bronze")
 {
     header("Location: pricing-html.php");
-    exit("User isn't subcribed");
+    exit();
 }
 
 function error_page($message)
@@ -31,7 +31,7 @@ function error_page_user($message) // Special error function : avoid getting mes
 if (!isset($_GET['send']))
 {
     echo error_page("Aucun destinataire n'a été sélectionné");
-    exit("The recipient isnt set.");
+    exit();
 }
 
 $recipient = htmlspecialchars($_GET['send']);
@@ -40,7 +40,7 @@ $recipient = htmlspecialchars($_GET['send']);
 if (!file_exists("../data/users/$recipient.sunshine"))
 {
     echo error_page("L'utilisateur $recipient n'existe pas.");
-    exit("The recipient does not exist");
+    exit();
 }
 
 // Get the rank of recipient
@@ -63,7 +63,7 @@ if (!fclose($userFile))
 if ($recipient_rank == "bronze")
 {
     echo error_page_user("Le destinataire n'est pas abonné.");
-    exit("The recipient isnt subscribed.");
+    exit();
 }
 
 ?>

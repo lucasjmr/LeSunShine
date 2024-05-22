@@ -50,6 +50,10 @@ if ($_SESSION['gender'] != "Femme")
                     // Update user info file
                     update_user_info();
                 }
+                else if ($_SESSION['rank'] == "silver")
+                {
+                     
+                }
                 break;
             case "gold":
                 if ($_SESSION['rank'] == "bronze" || $_SESSION['rank'] == "silver")

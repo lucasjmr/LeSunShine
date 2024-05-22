@@ -121,11 +121,13 @@ function startsWith($stringToSearchIn, $stringToCheck)
             </div>
             <div class="seenby">
                 <p>Visiteurs de votre profil</p>
-                <?php foreach ($associativeVisitorsArray as $filename => $visitor) : ?>
-                    <?php if (!isVisitorInConversations($visitor, $conversations, $currentUser)) : ?>
-                        <div class="recipient" onclick="location.href='?conversation=<?= $filename ?>'"><?= htmlspecialchars($visitor) ?></div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <?php if (!empty($associativeVisitorsArray)) : ?>
+                    <?php foreach ($associativeVisitorsArray as $filename => $visitor) : ?>
+                        <?php if (!isVisitorInConversations($visitor, $conversations, $currentUser)) : ?>
+                            <div class="recipient" onclick="location.href='?conversation=<?= $filename ?>'"><?= htmlspecialchars($visitor) ?></div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div class="conversations">

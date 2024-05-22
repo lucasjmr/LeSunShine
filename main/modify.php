@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if (strlen($new_custom_message) > 64 || strlen($new_custom_message) < 3)
         {
             echo error_page("La longueur du message n'est pas comprise entre 3 et 64 caractères.");
-            exit("Wrong custom message length");
+            exit();
         }
         $_SESSION['custom_message'] = $new_custom_message;
 

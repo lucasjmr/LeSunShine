@@ -177,6 +177,7 @@ input[name="message"] {
 
 input[type="submit"] {
     width: 10%;
+    cursor: pointer;
 }
 
 input::placeholder {
@@ -234,7 +235,7 @@ input::placeholder {
 
 .img_right {
     right: 0;
-    transform: translateX(170%);
+    transform: translateX(200%);
 }
 
 .img_left {

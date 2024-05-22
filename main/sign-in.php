@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if (!isset($_POST['pseudo']) || !isset($_POST['password']) || empty($_POST['pseudo']) || empty($_POST['password']))
     {
         echo error_page("L'utilisateur doit remplir tous les champs.");
-        exit("User must fill all the fields.");
+        exit();
     }
 
     // Get the logins infos
@@ -112,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     else
     {
         echo error_page("L'Authentification a échoué.");
+        exit();
     }
 }
 else

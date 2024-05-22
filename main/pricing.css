@@ -78,6 +78,7 @@ header img {
     backdrop-filter: blur(20px);
     border-radius: 50px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .box h1 {

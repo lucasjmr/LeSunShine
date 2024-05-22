@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if (!isset($_POST['pseudo']) || !isset($_POST['password']) || !isset($_POST['email']) || !isset($_POST['gender']) || !isset($_POST['birthday']) || !isset($_POST['last_name']) || !isset($_POST['first_name']) || !isset($_POST['home_adress']) || !isset($_POST['custom_message']) || empty($_POST['pseudo']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['gender']) || empty($_POST['birthday']) || empty($_POST['last_name']) || empty($_POST['first_name']) || empty($_POST['home_adress']) || empty($_POST['custom_message']))
     {
         echo error_page("L'utilisateur doit remplir tous les champs.");
-        exit("User must fill all the fields.");
+        exit();
     }
 
     $form_pseudo = htmlspecialchars($_POST['pseudo']);
@@ -47,20 +47,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     if (!checkdate(!$parsed_birthday || $parsed_birthday['month'], $parsed_birthday['day'], $parsed_birthday['year'])) // check if date is valid
     {
         echo error_page("La date de naissance n'est pas valide.");
-        exit("Invalid birth date.");
+        exit();
     }
 
     if ($age < 18 || $age > 122)
     {
         echo error_page("Vous devez avoir entre 18 et 122 ans");
-        exit("User must be between 18 and 122 years old.");
+        exit();
     }
 
+    // Verify pseudo is "default or not because is yes, user could change the default profil picture of everyone !!
+
     // Verify if there are spaces in pseudo or email
-    if (strpos($_POST['pseudo'], ' ') !== false || strpos($_POST['email'], ' ') !== false)
+    if (strpos($_POST['pseudo'], ' ') !== false || strpos($_POST['email'], ' ') !== false || strpos($_POST['email'], '@') !== false)
     {
-        echo error_page("Le pseudo ou l'email ne peut pas contenir d'espaces.");
-        exit("Pseudo or email cannot contain spaces.");
+        echo error_page("Le pseudo ou l'email ne peut pas contenir d'espaces. L'email doit également contenir un '@'");
+        exit();
     }
 
     // Verify if given variables are not too long/ too short
@@ -75,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     )
     {
         echo error_page("Un ou plusieurs champs dépassent la limite maximum de caractères");
-        exit("One or more fields exceed the maximum length.");
+        exit();
     }
     if (
         strlen($form_pseudo) < 3 ||
@@ -88,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     )
     {
         echo error_page("Un ou plusieurs champs ne font pas la limite minimum de caractères");
-        exit("One or more fields are too short.");
+        exit();
     }
 
     // Verify if someone already has same pseudo/email
@@ -105,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($pseudo == $form_pseudo || $email == $form_email)
         {
             echo error_page("Le pseudo/email est déjà utilisé.");
-            exit("Pseudo/email already taken.");
+            exit();
         }
     }
 
