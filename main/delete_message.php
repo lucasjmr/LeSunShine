@@ -7,6 +7,18 @@ if (!isset($_SESSION['pseudo']))
     exit();
 }
 
+function error_page($message)
+{
+    $htmlTemplate = file_get_contents('error.html');
+    $errorPage = str_replace('{error_message}', $message, $htmlTemplate);
+    return $errorPage;
+}
+
+function startsWith($stringToSearchIn, $stringToCheck)
+{
+    return strpos($stringToSearchIn, $stringToCheck) === 0; // strpos returns 0 if the postion of $stringToCheck is the first string in $stringTOSearchIn
+}
+
 $currentUser = $_SESSION['pseudo'];
 $conversationsDir = "../data/conversations/";
 
@@ -22,11 +34,24 @@ if (isset($_GET['conversation']) && isset($_GET['index']))
         $messages = array_reverse($messages); // messages are printed reversed in html page !!!
         if ($index >= 0 && $index < count($messages)) // avoid trying to delete wrong message
         {
-            unset($messages[$index]);
-            $messages = array_reverse($messages); // invert again messages
-            file_put_contents($conversationFile, implode(PHP_EOL, $messages) . PHP_EOL);
+            if (startsWith($messages[$index], "<" . $_SESSION['pseudo'] . ">"))
+            {
+                unset($messages[$index]);
+                $messages = array_reverse($messages); // invert again messages
+                file_put_contents($conversationFile, implode(PHP_EOL, $messages) . PHP_EOL);
+            }
+            else
+            {
+                echo error_page("Vous ne pouvez pas supprimer un message que vous n'avez pas écrit.");
+                exit();
+            }
         }
     }
+}
+else
+{
+    header("Location: inbox-html.php");
+    exit();
 }
 
 header("Location: inbox-html.php?conversation=" . $conversation);

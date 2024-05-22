@@ -14,6 +14,13 @@ if ($_SESSION['rank'] == "bronze") // If user isn't subscribed, redirects him to
     exit("User must have a rank to view his inbox");
 }
 
+$reportSuccessMessage = "";
+if (isset($_SESSION['report_success']))
+{
+    $reportSuccessMessage = $_SESSION['report_success'];
+    unset($_SESSION['report_success']);
+}
+
 $currentUser = $_SESSION['pseudo'];
 $conversationsDir = "../data/conversations/";
 
@@ -57,7 +64,7 @@ $visitorsArray = array();
 if (!file_exists("../data/visitors/$currentUser.sunshine"))
 {
     echo error_page("The visitors file of your profile does not exist.");
-    exit("Visitors file missing");
+    exit();
 }
 else
 {
@@ -112,6 +119,11 @@ function startsWith($stringToSearchIn, $stringToCheck)
         </div>
     </header>
     <div id="lower">
+        <?php if (!empty($reportSuccessMessage)) : ?>
+            <script>
+                alert("<?=$reportSuccessMessage?>");
+            </script>
+        <?php endif; ?>
         <div class="leftpanel">
             <div class="recipients">
                 <p>Conversations</p>

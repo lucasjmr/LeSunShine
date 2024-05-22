@@ -37,8 +37,16 @@ if (isset($_GET['conversation']) && isset($_GET['index']))
             {
                 exit("Something went wrong while trying to close logins file");
             }
+
+            // Notify user message sucessfully reported
+            $_SESSION['report_success'] = "Le message a bien été signalé.";
         }
     }
+}
+else
+{
+    header("Location: inbox-html.php");
+    exit();
 }
 
 header("Location: inbox-html.php?conversation=" . urlencode($conversation));
