@@ -9,6 +9,11 @@ function error_page($message)
     return $errorPage;
 }
 
+function isPseudoValid($pseudo)
+{
+    return preg_match('/^[a-z]+$/', $pseudo);
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     // Get values from form and checks if they are valid
@@ -18,7 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit();
     }
 
-    $form_pseudo = htmlspecialchars($_POST['pseudo']);
+    $form_pseudo = $_POST['pseudo'];
+
+    if (!isPseudoValid($form_pseudo)) {
+        echo error_page("Le pseudo ne doit contenir que des lettres minuscules de l'alphabet de base, ni d'espace.");
+        exit();
+    }
+
     $form_password = htmlspecialchars($_POST['password']);
     $form_email = htmlspecialchars($_POST['email']);
     $form_gender = $_POST['gender'];
@@ -59,9 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     // Verify pseudo is "default or not because is yes, user could change the default profil picture of everyone !!
 
     // Verify if there are spaces in pseudo or email
-    if (strpos($_POST['pseudo'], ' ') !== false || strpos($_POST['email'], ' ') !== false || strpos($_POST['email'], '@') !== false)
+    if (strpos($_POST['email'], ' ') !== false || !(strpos($_POST['email'], '@') !== false))
     {
-        echo error_page("Le pseudo ou l'email ne peut pas contenir d'espaces. L'email doit également contenir un '@'");
+        echo error_page("L'email ne peut pas contenir d'espaces. Il doit également contenir un '@'");
         exit();
     }
 
