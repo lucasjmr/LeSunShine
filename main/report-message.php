@@ -7,13 +7,21 @@ if (!isset($_SESSION['pseudo']))
     exit();
 }
 
+function error_page($message)
+{
+    $htmlTemplate = file_get_contents('error.html');
+    $errorPage = str_replace('{error_message}', $message, $htmlTemplate);
+    return $errorPage;
+}
+
 $currentUser = $_SESSION['pseudo'];
 $conversationsDir = "../data/conversations/";
 
-if (isset($_GET['conversation']) && isset($_GET['index']))
+if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['reason']) && !empty($_POST['conversation']) && !empty($_POST['index']) && !empty($_POST['reason']))
 {
-    $conversation = htmlspecialchars($_GET['conversation']);
-    $index = intval($_GET['index']);
+    $conversation = $_POST['conversation'];
+    $index = intval($_POST['index']);
+    $reason = $_POST['reason'];
     $conversationFile = $conversationsDir . $conversation . ".sunshine";
 
     if (file_exists($conversationFile))
@@ -29,24 +37,26 @@ if (isset($_GET['conversation']) && isset($_GET['index']))
             {
                 exit("Something went wrong while trying to open reports file");
             }
-        
+
             // If everything is okay, write reported message in file
-            fprintf($reportsFile, "%s %s\r\n", $currentUser, $reportedMessage);
-        
+            fprintf($reportsFile, "%s %s %s\r\n", $reason, $currentUser, $reportedMessage);
+
             if (!fclose($reportsFile))
             {
                 exit("Something went wrong while trying to close logins file");
             }
-
-            // Notify user message sucessfully reported
-            $_SESSION['report_success'] = "Le message a bien été signalé.";
         }
+        echo error_page("Erreur d'index");
+        exit();
+    }
+    else
+    {
+        echo error_page("Erreur nom de conversation");
+        exit();
     }
 }
 else
 {
-    header("Location: inbox-html.php");
+    echo error_page("Un problème est survenu lors du traitement du signalement");
     exit();
 }
-
-header("Location: inbox-html.php?conversation=" . urlencode($conversation));

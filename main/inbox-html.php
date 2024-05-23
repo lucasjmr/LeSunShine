@@ -14,11 +14,11 @@ if ($_SESSION['rank'] == "bronze") // If user isn't subscribed, redirects him to
     exit("User must have a rank to view his inbox");
 }
 
-$reportSuccessMessage = "";
-if (isset($_SESSION['report_success']))
+function error_page($message)
 {
-    $reportSuccessMessage = $_SESSION['report_success'];
-    unset($_SESSION['report_success']);
+    $htmlTemplate = file_get_contents('error.html');
+    $errorPage = str_replace('{error_message}', $message, $htmlTemplate);
+    return $errorPage;
 }
 
 $currentUser = $_SESSION['pseudo'];
@@ -119,11 +119,6 @@ function startsWith($stringToSearchIn, $stringToCheck)
         </div>
     </header>
     <div id="lower">
-        <?php if (!empty($reportSuccessMessage)) : ?>
-            <script>
-                alert("<?=$reportSuccessMessage?>");
-            </script>
-        <?php endif; ?>
         <div class="leftpanel">
             <div class="recipients">
                 <p>Conversations</p>
@@ -173,13 +168,13 @@ function startsWith($stringToSearchIn, $stringToCheck)
                             <span><?= htmlspecialchars($messageParts[1]) ?></span>
                             <?php if ($messageParts[0] == '<' . $currentUser . '>') : ?>
                                 <div class="message-options">
-                                    <button onclick="location.href='delete_message.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
+                                    <button onclick="location.href='delete-message.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
                                         <img src="../media/delete.png" alt="Supprimer" class="img_left">
                                     </button>
                                 </div>
                             <?php else : ?>
                                 <div class="message-options">
-                                    <button onclick="location.href='report_message.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
+                                    <button onclick="location.href='report-message-html.php?conversation=<?= $selectedConversation ?>&index=<?= $index ?>'">
                                         <img src="../media/report.png" alt="Signaler" class="img_right">
                                     </button>
                                 </div>

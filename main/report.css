@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../media/report.jpg");
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    /* Allows to push items to left and right, text to middle */
+}
+
+#header-container-right {
+    width: 150px;
+    height: 70px;
+}
+
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#title {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.button {
+    display: flex;
+    padding: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#lower {
+    height: 90vh;
+    display: flex;
+}
+
+header img {
+    padding-right: 10px;
+}
+
+.box {
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    background-color: #ffffff;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 5%;
+    font-weight: bold;
+}
+
+#message {
+    font-weight: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.message-box {
+    width: 80%;
+}
+
+form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7%;
+}
+
+input, select {
+    font-family: "Roboto", sans-serif;
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50px;
+    background: transparent;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+option {
+    color: black;
+}
+
+input[type="submit"] {
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+}
