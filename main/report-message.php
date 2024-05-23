@@ -17,7 +17,7 @@ function error_page($message)
 $currentUser = $_SESSION['pseudo'];
 $conversationsDir = "../data/conversations/";
 
-if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['reason']) && !empty($_POST['conversation']) && !empty($_POST['index']) && !empty($_POST['reason']))
+if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['reason']) && !empty($_POST['conversation']) && !empty($_POST['reason']))
 {
     $conversation = $_POST['conversation'];
     $index = intval($_POST['index']);
@@ -28,7 +28,7 @@ if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['rea
     {
         $messages = file($conversationFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         $messages = array_reverse($messages); // messages are reversed while displayed in conversation !
-        if ($index >= 0 && $index < count($messages))
+        if ($index >= 0 && ($index < count($messages)))
         {
             $reportedMessage = $messages[$index];
 
@@ -45,9 +45,17 @@ if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['rea
             {
                 exit("Something went wrong while trying to close logins file");
             }
+
+            echo "<script>
+                    alert('Le message a été signalé avec succès');
+                    window.location.href = 'inbox-html.php?conversation=" . htmlspecialchars($conversation) . "';
+                  </script>";
         }
-        echo error_page("Erreur d'index");
-        exit();
+        else
+        {
+            echo error_page("Erreur d'index");
+            exit();
+        }
     }
     else
     {

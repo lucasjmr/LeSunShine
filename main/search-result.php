@@ -217,6 +217,8 @@ else
 {
     header("Location: search-html.php");
 }
+
+$i = 0; // counter to check if we found pseudo different than self or blocked (see later)
 ?>
 
 <html>
@@ -241,16 +243,19 @@ else
         </div>
     </header>
     <div id="lower">
-        <?php if (empty($intersection) || (sizeof($intersection) == 1 && $intersection[0] == $_SESSION['pseudo'])) : ?>
+        <?php if (empty($intersection)) : ?>
+            <?php $i = 1 ?>
             <p id="no-result">Aucun résultat trouvé.</p>
         <?php else : ?>
             <?php foreach ($intersection as $elmt) : ?>
                 <?php
                 // Make sure you don't find yourself in search
-                if ($elmt == $_SESSION['pseudo'])
+                if ($elmt == $_SESSION['pseudo'] || str_contains($_SESSION['block'], $elmt))
                 {
                     continue;
                 }
+
+                $i += 1;
 
                 // Add name of user into the visitors file of $current_pseudo  
                 $visitorFile = fopen("../data/visitors/$elmt.sunshine", "ab+"); // Opens in binary to work on linux, windows and macos 
@@ -322,8 +327,13 @@ else
                         <div class="message">
                             Message : <?= $message ?>
                         </div>
-                        <div class="sendmessage" onclick="location.href='message.php?send=<?= $pseudo ?>'">
-                            Envoyer Message
+                        <div class="button-container">
+                            <div class="sendmessage" onclick="location.href='message.php?send=<?= $pseudo ?>'">
+                                Envoyer Message
+                            </div>
+                            <div class="sendmessage" onclick="location.href='block.php?block=<?= $pseudo ?>'">
+                                Bloquer
+                            </div>
                         </div>
                     </div>
                     <div class="profil-image">
@@ -341,6 +351,9 @@ else
                     </div>
                 </div>
             <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if ($i == 0) : ?>
+            <p id="no-result">Aucun résultat trouvé.</p>
         <?php endif; ?>
     </div>
 </body>

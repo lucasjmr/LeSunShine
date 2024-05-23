@@ -58,6 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         echo error_page("L'utilisateur $recipient n'existe pas.");
         exit();
     }
+    if (str_contains($_SESSION['block'], $recipient))
+    {
+        echo error_page("Cet utilisateur ne peut pas recevoir de message de votre part.");
+        exit();
+    }
 
     $sender = $_SESSION['pseudo'];
 

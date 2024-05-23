@@ -66,6 +66,12 @@ if ($recipient_rank == "bronze")
     exit();
 }
 
+if (str_contains($_SESSION['block'], $recipient))
+{
+    echo error_page_user("Cet utilisateur ne peut pas recevoir de message de votre part.");
+    exit();
+}
+
 ?>
 
 <html>

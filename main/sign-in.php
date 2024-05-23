@@ -79,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $_SESSION['email'] = $array[8];
         $_SESSION['rank'] = $array[9];
         $_SESSION['exp_date'] = $array[10];
+        $_SESSION['block'] = $array[11];
 
         if (!fclose($userFile))
         {

@@ -119,6 +119,10 @@ body {
     margin: 2%;
 }
 
+.button-container {
+    display: flex;
+}
+
 .sendmessage {
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -133,6 +137,7 @@ body {
     font-weight: bold;
     color: white;
     text-transform: uppercase;
+    flex: 1;
 }
 
 #no-result {

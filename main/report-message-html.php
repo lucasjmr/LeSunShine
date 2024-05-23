@@ -14,7 +14,7 @@ function error_page($message)
     return $errorPage;
 }
 
-if (isset($_GET['conversation']) && isset($_GET['index']) && !empty($_GET['conversation']) && !empty($_GET['index']))
+if (isset($_GET['conversation']) && isset($_GET['index']) && !empty($_GET['conversation']))
 {
     $conversation = htmlspecialchars($_GET['conversation']);
     $index = intval($_GET['index']);
@@ -24,7 +24,7 @@ if (isset($_GET['conversation']) && isset($_GET['index']) && !empty($_GET['conve
     {
         $messages = file($conversationFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         $messages = array_reverse($messages); // messages are reversed while displayed in conversation !
-        $reportedMessage = preg_replace('/^[\s:]+/', '', $messages[$index]);
+        $reportedMessage = preg_replace('/^<[^>]+>:\s*/', '', $messages[$index]);
     }
     else
     {
@@ -34,7 +34,7 @@ if (isset($_GET['conversation']) && isset($_GET['index']) && !empty($_GET['conve
 }
 else
 {
-    header("Location: inbox-html.php");
+    header("Location: inbox-html.php?caca");
     exit();
 }
 ?>
@@ -63,9 +63,9 @@ else
     <div class="box">
         <p class="text">Message signalé :</p>
         <div class="text message-box">
-            <p id="message"><?= $reportedMessage ?></p>
+            <p id="message"><?= htmlspecialchars($reportedMessage) ?></p>
         </div>
-        <form action="report_message.php" method="POST">
+        <form action="report-message.php" method="POST">
             <input type="hidden" name="conversation" value="<?php echo htmlspecialchars($_GET['conversation']); ?>">
             <input type="hidden" name="index" value="<?php echo intval($_GET['index']); ?>">
 

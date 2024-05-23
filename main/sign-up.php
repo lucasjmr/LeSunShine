@@ -68,6 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
 
     // Verify pseudo is "default or not because is yes, user could change the default profil picture of everyone !!
+    if ($form_pseudo == "default" || $form_pseudo == "admin")
+    {
+        echo error_page("Vous ne pouvez pas choisir ce pseudo");
+        exit();
+    }
 
     // Verify if there are spaces in pseudo or email
     if (strpos($_POST['email'], ' ') !== false || !(strpos($_POST['email'], '@') !== false))
@@ -169,6 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $_SESSION['email'] = $form_email;
     $_SESSION['rank'] = $rank;
     $_SESSION['exp_date'] = $exp_date;
+    $_SESSION['block'] = '';
 
     // Create the visitors file
     $visitorfile = fopen("../data/visitors/$form_pseudo.sunshine", "w");
