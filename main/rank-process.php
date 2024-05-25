@@ -23,11 +23,17 @@ function update_user_info()
         exit("Something went wrong while trying to create user file");
     }
 
-    fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n", $_SESSION['pseudo'], $_SESSION['signup_date'], $_SESSION['gender'], $_SESSION['birthday'], $_SESSION['custom_message'], $_SESSION['last_name'], $_SESSION['first_name'], $_SESSION['home_adress'], $_SESSION['email'], $_SESSION['rank'], $_SESSION['exp_date']);
+    fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s", $_SESSION['pseudo'], $_SESSION['signup_date'], $_SESSION['gender'], $_SESSION['birthday'], $_SESSION['custom_message'], $_SESSION['last_name'], $_SESSION['first_name'], $_SESSION['home_adress'], $_SESSION['email'], $_SESSION['rank'], $_SESSION['exp_date'], $_SESSION['block']);
     if (!fclose($userFile))
     {
         exit("Something went wrong while trying to close user file");
     }
+}
+
+if ($_SESSION['rank'] == "admin")
+{
+    echo error_page("Vous êtes administrateur.");
+    exit();
 }
 
 if ($_SESSION['gender'] != "Femme")

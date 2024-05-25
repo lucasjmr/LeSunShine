@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         }
 
         // Verify plan
-        if ((strtotime(date("Y-m-d")) > strtotime($_SESSION['exp_date'])) && $_SESSION['rank'] != "platinum")
+        if ((strtotime(date("Y-m-d")) > strtotime($_SESSION['exp_date'])) && $_SESSION['rank'] != "platinum" && $_SESSION['rank'] != "admin")
         {
             $_SESSION['rank'] = "bronze";
             $exp_date = new DateTime();
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                 exit("Something went wrong while trying to create user file");
             }
 
-            fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n", $_SESSION['pseudo'], $_SESSION['signup_date'], $_SESSION['gender'], $_SESSION['birthday'], $_SESSION['custom_message'], $_SESSION['last_name'], $_SESSION['first_name'], $_SESSION['home_adress'], $_SESSION['email'], $_SESSION['rank'], $_SESSION['exp_date']);
+            fprintf($userFile, "%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s", $_SESSION['pseudo'], $_SESSION['signup_date'], $_SESSION['gender'], $_SESSION['birthday'], $_SESSION['custom_message'], $_SESSION['last_name'], $_SESSION['first_name'], $_SESSION['home_adress'], $_SESSION['email'], $_SESSION['rank'], $_SESSION['exp_date'], $_SESSION['block']);
             if (!fclose($userFile))
             {
                 exit("Something went wrong while trying to close user file");

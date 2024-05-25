@@ -57,6 +57,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
         </div>
         <div class="box" onclick="location.href='rank-process.php?rank=gold'">
             <h1>Gold</h1>
+            <p><?= $_SESSION['block'] ?></p>
             <p>Vous débloquez l'accès complet à toutes les fonctionnalités pour une durée d'un an.</p>
             <p class="price-tag">Prix : 50€</p>
             <span>

@@ -26,6 +26,11 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
             <div class="button" onclick="location.href='sign-in-html.php'">
                 Changer de compte
             </div>
+            <?php if ($_SESSION['rank'] == "admin") : ?>
+                <div class="button" onclick="location.href='sign-in-html.php'">
+                    Panel admin
+                </div>
+            <?php endif; ?>
         </div>
     </header>
 

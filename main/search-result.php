@@ -249,7 +249,7 @@ $i = 0; // counter to check if we found pseudo different than self or blocked (s
         <?php else : ?>
             <?php foreach ($intersection as $elmt) : ?>
                 <?php
-                // Make sure you don't find yourself in search
+                // Make sure you don't find yourself or blocked users in search 
                 if ($elmt == $_SESSION['pseudo'] || str_contains($_SESSION['block'], $elmt))
                 {
                     continue;
