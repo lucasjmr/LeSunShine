@@ -24,7 +24,7 @@ if (!is_dir("../data/conversations"))
 if (!file_exists("../data/logins.sunshine"))
 {
     $userfile = fopen("../data/logins.sunshine", "w");
-    if(!$userfile)
+    if (!$userfile)
     {
         exit('A problem occured while creating logins file');
     }
@@ -36,13 +36,25 @@ if (!file_exists("../data/logins.sunshine"))
 if (!file_exists("../data/reports.sunshine"))
 {
     $userfile = fopen("../data/reports.sunshine", "w");
-    if(!$userfile)
+    if (!$userfile)
     {
         exit('A problem occured while creating report file');
     }
     if (!fclose($userfile))
     {
         exit("Something went wrong while trying to close report file");
+    }
+}
+if (!file_exists("../data/bans.sunshine"))
+{
+    $userfile = fopen("../data/bans.sunshine", "w");
+    if (!$userfile)
+    {
+        exit('A problem occured while creating bans file');
+    }
+    if (!fclose($userfile))
+    {
+        exit("Something went wrong while trying to close bans file");
     }
 }
 

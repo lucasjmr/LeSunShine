@@ -53,7 +53,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
                     echo "$interval->y ans";
                     ?>
                 </p>
-                <p>Abonnement :
+                <p>Rank :
                     <?= $_SESSION['rank'] ?>
                 </p>
                 <p>Message customisé :

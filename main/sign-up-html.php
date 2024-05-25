@@ -45,6 +45,18 @@ if (!file_exists("../data/reports.sunshine"))
         exit("Something went wrong while trying to close report file");
     }
 }
+if (!file_exists("../data/bans.sunshine"))
+{
+    $userfile = fopen("../data/bans.sunshine", "w");
+    if(!$userfile)
+    {
+        exit('A problem occured while creating bans file');
+    }
+    if (!fclose($userfile))
+    {
+        exit("Something went wrong while trying to close bans file");
+    }
+}
 
 ?>
 

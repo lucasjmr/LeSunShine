@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    /* Allows to push items to left and right, text to middle */
+}
+
+#header-container-left {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#title {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    position: absolute;
+    z-index: -1;
+}
+
+header img {
+    padding-right: 10px;
+}
+
+.box {
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    font-family: "Roboto", sans-serif;
+    font-size: 35px;
+    padding: 1%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
