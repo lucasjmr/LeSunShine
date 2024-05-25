@@ -23,14 +23,12 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
             <p id="title">LeSunShine</p>
         </div>
         <div id="header-container-right">
-            <div class="button" onclick="location.href='sign-in-html.php'">
+            <?php if ($_SESSION['rank'] == "admin") : ?>
+                <div class="button" onclick="location.href='panel-admin-html.php'">Panel admin</div>
+            <?php endif; ?>
+            <div class="button" id="change-account" onclick="location.href='sign-in-html.php'">
                 Changer de compte
             </div>
-            <?php if ($_SESSION['rank'] == "admin") : ?>
-                <div class="button" onclick="location.href='sign-in-html.php'">
-                    Panel admin
-                </div>
-            <?php endif; ?>
         </div>
     </header>
 
