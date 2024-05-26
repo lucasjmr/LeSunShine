@@ -170,6 +170,10 @@ if (isset($_GET['user']))
     {
         file_put_contents("../data/reports.sunshine", implode(PHP_EOL, $newReports) . PHP_EOL);
     }
+    else
+    {
+        file_put_contents("../data/reports.sunshine", "");
+    }
     
     header("Location: ban-animation.php?user=$userToBan");
 }
