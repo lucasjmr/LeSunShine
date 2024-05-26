@@ -26,3 +26,5 @@ Suite au setup de github desktop tardif, j'ai dû supprimer l'ancien dépôt pou
 23/05/2024 : Ajout signalement des messages + blocage utilisateur. + Fix css 
 
 25/05/2024 : ajout gestion utilisateurs admin panel (ban + modif profil frontend)
+
+26/05/2024 : ajout gestion messagerie + modif profil admin panel backend -> projet terminé
