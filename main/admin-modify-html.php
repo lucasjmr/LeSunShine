@@ -68,6 +68,9 @@ else
 </head>
 
 <body>
+    <script>
+        alert("En tant qu'administrateur vous avez les pleins pouvoirs. Veuillez respecter les formats de réponse. Des résultats innatendus et crash pourraient subvenir en cas de changements douteux.");
+    </script>
     <header>
         <div id="header-container-left">
             <img class="logo" src="../media/logo.png" alt="logo">
@@ -135,6 +138,7 @@ else
                 </div>
 
                 <input type="hidden" name="block" value="<?= $block ?>">
+                <input type="hidden" name="pseudo" value="<?= $pseudo ?>">
 
                 <div class="form-group submit-group">
                     <input type="submit" name="submit" value="Modifier">
