@@ -166,9 +166,11 @@ if (isset($_GET['user']))
             $newReports[] = $reports[$i + 2];
         }
     }
-    file_put_contents("../data/reports.sunshine", implode(PHP_EOL, $newReports) . PHP_EOL);
-
-
+    if (!empty($newReports))
+    {
+        file_put_contents("../data/reports.sunshine", implode(PHP_EOL, $newReports) . PHP_EOL);
+    }
+    
     header("Location: ban-animation.php?user=$userToBan");
 }
 else
