@@ -13,22 +13,23 @@ function error_page($message)
 if (!isset($_SESSION['rank']) || $_SESSION['rank'] != "admin")
 {
     header("Location: user-gestion-html.php");
+    exit();
 }
 
 
 if (isset($_POST['submit']))
 {
-    $pseudo = $_POST['pseudo'];
-    $signup_date = $_POST['signup_date'];
-    $gender = $_POST['gender'];
-    $birthdate = $_POST['birthdate'];
-    $message = $_POST['message'];
-    $last_name = $_POST['last_name'];
-    $first_name = $_POST['first_name'];
-    $home_adress = $_POST['home_adress'];
-    $email = $_POST['email'];
-    $rank = $_POST['rank'];
-    $exp_date = $_POST['exp_date'];
+    $pseudo = trim($_POST['pseudo']);
+    $signup_date = trim($_POST['signup_date']);
+    $gender = trim($_POST['gender']);
+    $birthdate = trim($_POST['birthdate']);
+    $message = trim($_POST['message']);
+    $last_name = trim($_POST['last_name']);
+    $first_name = trim($_POST['first_name']);
+    $home_adress = trim($_POST['home_adress']);
+    $email = trim($_POST['email']);
+    $rank = trim($_POST['rank']);
+    $exp_date = trim($_POST['exp_date']);
     $block = $_POST['block'];
 
     $userFile = fopen("../data/users/$pseudo.sunshine", "wb");

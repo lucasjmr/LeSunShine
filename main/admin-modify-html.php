@@ -12,6 +12,7 @@ function error_page($message)
 if (!isset($_SESSION['rank']) || $_SESSION['rank'] != "admin")
 {
     header("Location: user-gestion-html.php");
+    exit();
 }
 
 if (isset($_GET['user']))

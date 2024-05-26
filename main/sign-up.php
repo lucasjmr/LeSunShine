@@ -109,6 +109,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         exit();
     }
 
+    //verify if email is not in banned emails
+    $bannedEmails = file("../data/bans.sunshine", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if (in_array($form_email, $bannedEmails))
+    {
+        echo error_page("Cet email est banni.");
+            exit();
+    }
+
     // Verify if someone already has same pseudo/email
     $loginsFile = fopen("../data/logins.sunshine", "rb"); // Opens in binary to work on linux, windows and macos 
     if (!$loginsFile)

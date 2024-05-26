@@ -86,7 +86,8 @@ header img {
     margin: 0.8%;
 }
 
-.recipients, .seenby {
+.recipients,
+.seenby {
     height: 50%;
     overflow-y: auto;
     overflow-x: auto;
@@ -99,7 +100,8 @@ header img {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-.recipients p, .seenby p{
+.recipients p,
+.seenby p {
     color: white;
     margin-bottom: 30px;
     font-size: 25px;
@@ -199,7 +201,7 @@ input::placeholder {
     color: white;
     margin-top: 1%;
     padding: 1%;
-    align-self: flex-start; /* aligner a gauche par default */
+    align-self: flex-start;
 }
 
 .right {
@@ -221,7 +223,8 @@ input::placeholder {
 
 .message-content {
     flex-grow: 1;
-    word-wrap: break-word; /* Permettre le retour à la ligne automatique quand le message est trop long :) */
+    word-wrap: break-word;
+    /* Permettre le retour à la ligne automatique quand le message est trop long :) */
 }
 
 .message-options {
@@ -241,4 +244,3 @@ input::placeholder {
     width: 30px;
     height: 30px;
 }
-

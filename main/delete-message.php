@@ -34,7 +34,7 @@ if (isset($_GET['conversation']) && isset($_GET['index']))
         $messages = array_reverse($messages); // messages are printed reversed in html page !!!
         if ($index >= 0 && $index < count($messages)) // avoid trying to delete wrong message
         {
-            if (startsWith($messages[$index], "<" . $_SESSION['pseudo'] . ">"))
+            if (startsWith($messages[$index], "<" . $_SESSION['pseudo'] . ">") || $_SESSION['rank'] == "admin")
             {
                 unset($messages[$index]);
                 $messages = array_reverse($messages); // invert again messages

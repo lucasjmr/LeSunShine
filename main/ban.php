@@ -25,7 +25,7 @@ if (isset($_GET['user']))
         exit();
     }
 
-    // BAN : delete convs, delete images, delete in logins file, delete user file, delete visitors file, delete his name of all visitors, delete name in blocked users, add email to banned list
+    // BAN : delete convs, delete images, delete in logins file, delete user file, delete visitors file, delete his name of all visitors, delete name in blocked users, add email to banned list, remove reported messages
 
     // Delete image
     if (file_exists("../data/images/$userToBan.jpg"))
@@ -147,6 +147,26 @@ if (isset($_GET['user']))
         }
         file_put_contents($file, implode(PHP_EOL, $infos));
     }
+
+    // deletes reports with the usertoban name
+    $reports = file("../data/reports.sunshine", FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
+    for ($i = 0; $i < count($reports); $i = $i + 3)
+    {
+        list($pseudo, $message) = explode(': ', $reports[$i + 2], 2);
+        $userBeingReported = trim($pseudo, "<>");
+
+        if ($userBeingReported != $userToBan)
+        {
+            // Ajouter le motif
+            $newReports[] = $reports[$i];
+            // Ajouter l'utilisateur signalé
+            $newReports[] = $reports[$i + 1];
+            // Ajouter le message
+            $newReports[] = $reports[$i + 2];
+        }
+    }
+    file_put_contents("../data/reports.sunshine", implode(PHP_EOL, $newReports) . PHP_EOL);
+
 
     header("Location: ban-animation.php?user=$userToBan");
 }

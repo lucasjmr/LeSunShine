@@ -39,7 +39,7 @@ if (isset($_POST['conversation']) && isset($_POST['index']) && isset($_POST['rea
             }
 
             // If everything is okay, write reported message in file
-            fprintf($reportsFile, "%s %s %s\r\n", $reason, $currentUser, $reportedMessage);
+            fprintf($reportsFile, "%s\r\n%s\r\n%s\r\n", $reason, $currentUser, $reportedMessage);
 
             if (!fclose($reportsFile))
             {

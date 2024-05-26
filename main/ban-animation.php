@@ -29,12 +29,12 @@ else
 </head>
 
 <body>
-    <script type="text/javascript">
-        setTimeout(function() {
-            window.location.href = 'user-gestion-html.php';
-        }, 2300);
+    <script>
+        function videoEnded() {
+            location.href = "panel-admin-html.php";
+        }
     </script>
-    <video autoplay muted playsinline poster="../media/ban-poster.jpg">
+    <video autoplay muted playsinline poster="../media/ban-poster.jpg" onended="videoEnded()">
         <source src="../media/ban.mp4">
     </video>
     <header>

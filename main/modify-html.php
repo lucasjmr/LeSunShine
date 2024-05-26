@@ -13,7 +13,7 @@ if (!isset($_SESSION['pseudo'])) // if user not connected, bring back to connect
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="modify.css">
     <link rel="icon" href="../media/logo.png">
-    <title>Modifier Mot de Passe</title>
+    <title>Modifier Profil</title>
 </head>
 
 <body>
