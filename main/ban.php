@@ -150,6 +150,7 @@ if (isset($_GET['user']))
 
     // deletes reports with the usertoban name
     $reports = file("../data/reports.sunshine", FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
+    $newReports = array();
     for ($i = 0; $i < count($reports); $i = $i + 3)
     {
         list($pseudo, $message) = explode(': ', $reports[$i + 2], 2);
