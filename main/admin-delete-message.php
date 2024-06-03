@@ -31,7 +31,14 @@ if (isset($_GET['conversation']) && isset($_GET['index']))
         {
             unset($messages[$index]);
             $messages = array_reverse($messages); // invert again messages
-            file_put_contents($conversationFile, implode(PHP_EOL, $messages) . PHP_EOL);
+            if (count($messages) != 1)
+            {
+                file_put_contents($conversationFile, implode(PHP_EOL, $messages));
+            }
+            else
+            {
+                file_put_contents($conversationFile, implode(PHP_EOL, $messages) . PHP_EOL);
+            }
         }
     }
 }
